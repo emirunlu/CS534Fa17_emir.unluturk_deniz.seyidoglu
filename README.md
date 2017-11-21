@@ -68,6 +68,21 @@ The `./cartagena` executable directly looks at the `main.cpp` that
 stays in the project folder itself. If you changed the code, please
 test it using the `main.cpp` file.
 
+## Documents
+
+### Postmortem
+
+[Postmortem report](./POSTMORTEM.md)
+
+This report is a postmortem of the project. It discusses the design decisions
+and challenges.
+
+### UMLs
+
+[UMLs](./UMLS.md)
+
+This report contains some UMLs of the design.
+
 ## Contributing
 
 Please do keep in mind to run the `make` command after every time you
