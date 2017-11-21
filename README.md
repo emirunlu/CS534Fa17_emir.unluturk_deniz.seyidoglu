@@ -47,27 +47,27 @@ There are three different folders called
 
 #### Symbols
 
-⋅⋅⋅In the symbols folder, there are six different symbols. 
-⋅⋅⋅These are Bottle, Keys, Sword, Skull, Hat, and Pistol. 
-⋅⋅⋅These symbols are the very core of the game. In order to 
-⋅⋅⋅make them tidy, we also have an abstract class called 
-⋅⋅⋅`symbol` that forces other symbols to behave the same. 
-⋅⋅⋅Please do keep that in mind while developing the code,
-⋅⋅⋅if some function is behaviourly same, include it to the
-⋅⋅⋅symbol class.
+⋅⋅⋅In the symbols folder, there are six different symbols.⋅⋅
+⋅⋅⋅These are Bottle, Keys, Sword, Skull, Hat, and Pistol.⋅⋅
+⋅⋅⋅These symbols are the very core of the game. In order to⋅⋅
+⋅⋅⋅make them tidy, we also have an abstract class called⋅⋅
+⋅⋅⋅`symbol` that forces other symbols to behave the same.⋅⋅
+⋅⋅⋅Please do keep that in mind while developing the code,⋅⋅
+⋅⋅⋅if some function is behaviourly same, include it to the⋅⋅
+⋅⋅⋅symbol class.⋅⋅
 
 #### Map
 
-⋅⋅⋅In the map folder, we have things that create the map.
-⋅⋅⋅One cell contains a symbol and one segment contains 6 
-⋅⋅⋅of these cells. A map also contains pirates which move
-⋅⋅⋅according to players. 
+⋅⋅⋅In the map folder, we have things that create the map.⋅⋅
+⋅⋅⋅One cell contains a symbol and one segment contains 6⋅⋅
+⋅⋅⋅of these cells. A map also contains pirates which move⋅⋅
+⋅⋅⋅according to players.⋅⋅
 
 #### Game
 
-⋅⋅⋅In the game folder, currently we have cards and map.
-⋅⋅⋅These things are the highest classes that holds information 
-⋅⋅⋅and/or collection of other sub classes.
+⋅⋅⋅In the game folder, currently we have cards and map.⋅⋅
+⋅⋅⋅These things are the highest classes that holds information⋅⋅
+⋅⋅⋅and/or collection of other sub classes.⋅⋅
 
 ## Testing 
 
