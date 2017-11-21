@@ -47,27 +47,27 @@ There are three different folders called
 
 #### Symbols
 
-⋅⋅⋅In the symbols folder, there are six different symbols.⋅⋅
-⋅⋅⋅These are Bottle, Keys, Sword, Skull, Hat, and Pistol.⋅⋅
-⋅⋅⋅These symbols are the very core of the game. In order to⋅⋅
-⋅⋅⋅make them tidy, we also have an abstract class called⋅⋅
-⋅⋅⋅`symbol` that forces other symbols to behave the same.⋅⋅
-⋅⋅⋅Please do keep that in mind while developing the code,⋅⋅
-⋅⋅⋅if some function is behaviourly same, include it to the⋅⋅
-⋅⋅⋅symbol class.⋅⋅
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the symbols folder, there are six different symbols.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These are Bottle, Keys, Sword, Skull, Hat, and Pistol.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These symbols are the very core of the game. In order to
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make them tidy, we also have an abstract class called
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`symbol` that forces other symbols to behave the same.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please do keep that in mind while developing the code,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if some function is behaviourly same, include it to the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symbol class.
 
 #### Map
 
-⋅⋅⋅In the map folder, we have things that create the map.⋅⋅
-⋅⋅⋅One cell contains a symbol and one segment contains 6⋅⋅
-⋅⋅⋅of these cells. A map also contains pirates which move⋅⋅
-⋅⋅⋅according to players.⋅⋅
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the map folder, we have things that create the map.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One cell contains a symbol and one segment contains 6
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of these cells. A map also contains pirates which move
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;according to players.
 
 #### Game
 
-⋅⋅⋅In the game folder, currently we have cards and map.⋅⋅
-⋅⋅⋅These things are the highest classes that holds information⋅⋅
-⋅⋅⋅and/or collection of other sub classes.⋅⋅
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the game folder, currently we have cards and map.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These things are the highest classes that holds information
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and/or collection of other sub classes.
 
 ## Testing 
 
