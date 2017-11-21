@@ -2,7 +2,7 @@
 
 ## MVC Design
 
-This is an overview of the MVC model. Simulator acts as the Model in this case.
+This is an overview of the MVC model.
 
 ![MVC UML](doc/mvc.png)
 
