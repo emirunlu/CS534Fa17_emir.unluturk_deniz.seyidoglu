@@ -5,7 +5,7 @@ class Cell {
 public:
 	Cell();
 	~Cell();
-	void print();
+	virtual void print();
 protected:
 private:
 };

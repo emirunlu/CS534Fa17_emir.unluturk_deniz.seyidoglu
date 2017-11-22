@@ -2,10 +2,11 @@
 #define Segment_H
 #include <vector>
 #include "./cell.h"
+#include "./boat.h"
 
 class Segment {
 public:
-	Segment();
+	Segment(bool lastSegment);
 	~Segment();
 	void print();
 protected:

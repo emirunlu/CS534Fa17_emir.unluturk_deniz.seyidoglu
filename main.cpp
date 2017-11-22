@@ -8,6 +8,6 @@ main() {
 	//Tnis will be our testbed
 	// Card* card = new Card();
 	// card->getSymbol()->print();
-	// Map* map = new Map();
-	// map->printSegments();
+	Map* map = new Map();
+	map->printSegments();
 }
