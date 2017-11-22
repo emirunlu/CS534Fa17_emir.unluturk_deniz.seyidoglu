@@ -34,3 +34,6 @@
 # Created files with make
 .depend
 cartagena
+
+# Mac specific file information
+.DS_Store
