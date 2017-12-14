@@ -19,8 +19,9 @@ Segment::~Segment() {
 void
 Segment::print() {
 	cout << "I'm a segment!" << endl;
-	for (int i = 0; i < 7; ++i) {
-		if (cells[i])
-			cells[i]->print();
+	for (int i = 0; i < cells.size(); ++i) {
+		cout << i + 1;
+		cout << "th cell:";
+		cells[i]->print();
 	}
 }

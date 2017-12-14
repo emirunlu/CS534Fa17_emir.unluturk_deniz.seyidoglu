@@ -5,6 +5,7 @@
 class Card {
 public:
 	Card();
+	Card(int symbol);
 	~Card();
 	Symbol* getSymbol();
 protected:

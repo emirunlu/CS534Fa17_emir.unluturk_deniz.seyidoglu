@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "../headers/helper.h"
+#include "../headers/symbolsHelper.h"
 
 using namespace std;
 
 Symbol*
-Helper::getRandomSymbol() {
+SymbolHelper::getRandomSymbol() {
 	srand (time(NULL));
 	try{
 		int random = rand()%6;
@@ -20,7 +20,7 @@ Helper::getRandomSymbol() {
 }
 
 Symbol*
-Helper::getNewSymbol(int number){
+SymbolHelper::getNewSymbol(int number){
 	switch(number){
 		case 0:
 			return new Bottle();

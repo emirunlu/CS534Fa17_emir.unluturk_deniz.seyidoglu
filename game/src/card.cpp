@@ -3,12 +3,16 @@
 #include <time.h>
 
 #include "../headers/card.h"
-#include "../../symbols/headers/helper.h"
+#include "../../helpers/headers/symbolsHelper.h"
 
 using namespace std;
 
 Card::Card() {
-	symbol = Helper::getRandomSymbol();
+	symbol = SymbolHelper::getRandomSymbol();
+}
+
+Card::Card(int symbolNumber) {
+	symbol = SymbolHelper::getNewSymbol(symbolNumber);
 }
 
 Card::~Card() {
