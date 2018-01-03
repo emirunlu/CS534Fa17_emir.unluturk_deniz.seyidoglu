@@ -37,3 +37,15 @@ cartagena
 
 # Mac specific file information
 .DS_Store
+*.filters
+*.vcxproj
+*.sln
+*.ipch
+*.opendb
+*.ilk
+*.db
+.vs/CS534/v15/.suo
+*.tlog
+*.idb
+*.pdb
+*.log
