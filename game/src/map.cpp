@@ -21,3 +21,8 @@ Map::printSegments() {
 		segments[i]->print();
 	}
 }
+
+void
+Map::clearMap() {
+	segments.clear();
+}

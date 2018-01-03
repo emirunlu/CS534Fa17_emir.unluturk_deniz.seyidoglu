@@ -8,6 +8,7 @@ public:
 	Map();
 	~Map();
 	void printSegments();
+	void clearMap();
 protected:
 private:
 	std::vector<Segment*> segments;

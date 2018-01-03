@@ -10,6 +10,7 @@ public:
 	~Game();
 	Map* getMap();
 	std::vector<Card*> getCards();
+	void clearCards();
 protected:
 private:
 	std::vector<Card*> cards;

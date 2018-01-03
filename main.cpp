@@ -2,6 +2,8 @@
 #include "game/headers/card.h"
 #include "game/headers/map.h"
 #include "game/headers/game.h"
+#include "game/headers/gameHelper.h"
+
 using namespace std;
 
 //Tnis will be our testbed
@@ -28,5 +30,36 @@ main() {
 		cout << (i + 1);
 		cout << "\t ";
 		cards[i]->getSymbol()->print();
+	}
+
+	cout << "Please enter your name" << endl;
+
+	string name = "";
+	cin >> name;
+
+	GameHelper* gameHelper = new GameHelper(name);
+	gameHelper->addPlayer("testAI1");
+	gameHelper->addPlayer("testAI2");
+	gameHelper->addPlayer("testAI3");
+	cout << "\n========================\n";
+	cout << "Starting the Game!!!" << endl;
+	cout << "========================\n\n";
+	unsigned int turn = 1;
+	gameHelper->updatePlayerTurn(turn);
+	while (true) {
+		Player* p = gameHelper->getCurrentPlayer();
+		if (p != NULL) {
+			cout << "Current player's turn: " << p->getName() << endl;
+		}
+		if (turn > gameHelper->getPlayers().size())
+			turn = 0;
+
+		cout << "Continue game? y or n" << endl;
+
+		string cont = "";
+		cin >> cont;
+		if (cont == "n")
+			break;
+		gameHelper->updatePlayerTurn(++turn);
 	}
 }

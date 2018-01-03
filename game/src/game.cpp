@@ -5,6 +5,8 @@
 
 #include "../headers/game.h"
 #include "../../helpers/headers/symbolsHelper.h"
+#include "../headers/player.h"
+
 
 using namespace std;
 
@@ -34,4 +36,9 @@ Game::getMap() {
 std::vector<Card*>
 Game::getCards() {
 	return cards;
+}
+
+void
+Game::clearCards() {
+	cards.clear();
 }
