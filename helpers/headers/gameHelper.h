@@ -1,7 +1,7 @@
 #ifndef GAMEHELPER_H
 #define GAMEHELPER_H
 
-#include "player.h"
+#include "../../game/headers/player.h"
 #include <vector>
 
 using namespace std;
@@ -9,10 +9,10 @@ using namespace std;
 class GameHelper {
 public:
 	GameHelper();
-	GameHelper(string name);
+	GameHelper(string name, string color);
 	~GameHelper();
 
-	void addPlayer(string name);
+	void addPlayer(string name, string color);
 	void setPlayer(Player* p);
 	void updatePlayerTurn(int turn);
 	Player* getCurrentPlayer();

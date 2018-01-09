@@ -1,14 +1,13 @@
 #include "../headers/gameHelper.h"
-#include "../headers/player.h"
 
 GameHelper::GameHelper() {
 	player = new Player();
 	currentPlayer = player;
 }
 
-GameHelper::GameHelper(std::string name)
+GameHelper::GameHelper(std::string name, std::string color)
 {
-	player = new Player(name);
+	player = new Player(name, color);
 	currentPlayer = player;
 }
 
@@ -17,9 +16,9 @@ GameHelper::~GameHelper()
 }
 
 void
-GameHelper::addPlayer(std::string name)
+GameHelper::addPlayer(std::string name, std::string color)
 {
-	Player* p = new Player(name);
+	Player* p = new Player(name, color);
 	Players.push_back(p);
 }
 

@@ -2,7 +2,7 @@
 #include "game/headers/card.h"
 #include "game/headers/map.h"
 #include "game/headers/game.h"
-#include "game/headers/gameHelper.h"
+#include "helpers/headers/gameHelper.h"
 
 using namespace std;
 
@@ -37,10 +37,10 @@ main() {
 	string name = "";
 	cin >> name;
 
-	GameHelper* gameHelper = new GameHelper(name);
-	gameHelper->addPlayer("testAI1");
-	gameHelper->addPlayer("testAI2");
-	gameHelper->addPlayer("testAI3");
+	GameHelper* gameHelper = new GameHelper(name, "green");
+	gameHelper->addPlayer("testAI1", "red");
+	gameHelper->addPlayer("testAI2", "blue");
+	gameHelper->addPlayer("testAI3", "yellow");
 	cout << "\n========================\n";
 	cout << "Starting the Game!!!" << endl;
 	cout << "========================\n\n";
@@ -50,6 +50,7 @@ main() {
 		Player* p = gameHelper->getCurrentPlayer();
 		if (p != NULL) {
 			cout << "Current player's turn: " << p->getName() << endl;
+			cout << "Current player's color: " << p->getColor() << endl;
 		}
 		if (turn > gameHelper->getPlayers().size())
 			turn = 0;
