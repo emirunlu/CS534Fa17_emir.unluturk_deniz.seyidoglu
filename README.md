@@ -43,6 +43,8 @@ There are three different folders called
 * Symbols
 * Map
 * Game
+* Helpers
+* Resources
 
 
 #### Symbols
@@ -61,6 +63,14 @@ of these cells. A map also contains pirates which move according to the players.
 
 In the game folder, currently we have cards and map. These are the highest classes that holds information 
 and/or collection of other sub classes.
+
+#### Helpers
+
+In the helpers folder, we have helpers classes to be able to control our game state and symbols.
+
+#### Resources
+
+In the resources folder, we currently have images to use in the game.
 
 ## Testing 
 
@@ -102,3 +112,8 @@ partner about master changes.
 * **Emir Ünlütürk**
 
 <sup>Contents of the project are subject to change, do keep in mind that project is under active development</sup>
+
+## Licenses for Art
+
+Designed by Freepik
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
