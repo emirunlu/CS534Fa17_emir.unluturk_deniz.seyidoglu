@@ -33,12 +33,12 @@ Player::getColor() {
 
 void
 Player::addCard(Card* c) {
-	cardList.push_back(c);
+	this->cardList.push_back(c);
 }
 
 void
 Player::addPirate(Pirate* p) {
-	pirateList.push_back(p);
+	this->pirateList.push_back(p);
 }
 
 std::vector<Card*>

@@ -33,13 +33,13 @@ After you execute the make file, there will be an executable called
 ## Project Structure
 
 ### General folder structure
-In general, we agreed on seperating the header and 
+In general, we agreed on separating the header and 
 src files throughout the project. 
 
 In header files, we define the structure of classes. 
 In src files, we define the functionality of said classes. 
 
-There are three different folders called 
+There are five different folders called 
 * Symbols
 * Map
 * Game
@@ -52,7 +52,7 @@ There are three different folders called
 In the symbols folder, there are six different symbols. These are Bottle, Keys, Sword, Skull, Hat, and Pistol. 
 These symbols are the very core of the game. In order to keep them tidy, we also have an abstract class called 
 `symbol` that forces other symbols to behave the same. Please do keep that in mind while developing the code,
-if some function is behaviourly the same, please include it to the symbol class.
+if some function is behaviorally the same, please include it to the symbol class.
 
 #### Map
 
@@ -100,7 +100,7 @@ make a change in the code.
 
 
 Also, please don't make direct changes to the master branch. Use a 
-seperate branch with 
+separate branch with 
 ```
 git checkout -b <things-that-you're-going-to-change>
 ```
