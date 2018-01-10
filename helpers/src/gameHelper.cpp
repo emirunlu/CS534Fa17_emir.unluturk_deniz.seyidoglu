@@ -13,6 +13,8 @@ GameHelper::GameHelper(std::string name, std::string color)
 
 GameHelper::~GameHelper()
 {
+	Players.clear();
+	std::cout << "Deleted Players vector" << std::endl;
 }
 
 void

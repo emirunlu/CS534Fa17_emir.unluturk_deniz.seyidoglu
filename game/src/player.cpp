@@ -14,6 +14,10 @@ Player::Player(std::string name, std::string color) {
 }
 
 Player::~Player() {
+	cardList.clear();
+	std::cout << "Deleted Players hand" << std::endl;
+	pirateList.clear();
+	std::cout << "Deleted Players piratelist" << std::endl;
 
 }
 
@@ -25,4 +29,34 @@ Player::getName() {
 std::string
 Player::getColor() {
 	return playerColor;
+}
+
+void
+Player::addCard(Card* c) {
+	cardList.push_back(c);
+}
+
+void
+Player::addPirate(Pirate* p) {
+	pirateList.push_back(p);
+}
+
+std::vector<Card*>
+Player::getHand() {
+	return cardList;
+}
+
+Card*
+Player::getCardInHand(int i) {
+	return cardList.at(i);
+}
+
+std::vector<Pirate*>
+Player::getPirateList() {
+	return pirateList;
+}
+
+Pirate*
+Player::getPirateInList(int i) {
+	return pirateList.at(i);
 }

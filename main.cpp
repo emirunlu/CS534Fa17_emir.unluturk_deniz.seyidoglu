@@ -37,10 +37,10 @@ main() {
 	string name = "";
 	cin >> name;
 
-	GameHelper* gameHelper = new GameHelper(name, "green");
-	gameHelper->addPlayer("testAI1", "red");
-	gameHelper->addPlayer("testAI2", "blue");
-	gameHelper->addPlayer("testAI3", "yellow");
+	GameHelper* gameHelper = new GameHelper(name, "blue");
+	gameHelper->addPlayer("testAI1", "yellow");
+	gameHelper->addPlayer("testAI2", "red");
+	gameHelper->addPlayer("testAI3", "green");
 	cout << "\n========================\n";
 	cout << "Starting the Game!!!" << endl;
 	cout << "========================\n\n";
@@ -49,8 +49,12 @@ main() {
 	while (true) {
 		Player* p = gameHelper->getCurrentPlayer();
 		if (p != NULL) {
+			p->addCard(cards.at(10)); // test
+			p->addPirate(new Pirate()); // test
 			cout << "Current player's turn: " << p->getName() << endl;
 			cout << "Current player's color: " << p->getColor() << endl;
+			cout << "Current player's card: " << p->getCardInHand(0) << endl; // Testing for now, gives pointer
+			cout << "Current player's pirate: " << p->getPirateInList(0) << endl; // Testing for now, gives pointer
 		}
 		if (turn > gameHelper->getPlayers().size())
 			turn = 0;
