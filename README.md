@@ -7,7 +7,8 @@
 You have to have the following tools in order to successfully compile the code.
 ```
 GNU Make
-GCC 
+GCC
+SDL2
 ```
 
 ### Installation
