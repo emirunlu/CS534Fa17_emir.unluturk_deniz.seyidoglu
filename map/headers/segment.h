@@ -9,6 +9,7 @@ public:
 	Segment(bool lastSegment);
 	~Segment();
 	void print();
+	Cell* getFirstCell();
 protected:
 private:
 	std::vector<Cell*> cells;

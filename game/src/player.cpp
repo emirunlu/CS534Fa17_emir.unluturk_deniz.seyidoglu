@@ -2,23 +2,30 @@
 #include <string>
 
 #include "../headers/player.h"
+#include "../../map/headers/nullCell.h"
 
 Player::Player() {
 	playerName = "Default";
 	playerColor = "DefaultColor";
 }
 
-Player::Player(std::string name, std::string color) {
+Player::Player(std::string name, std::string color, Game* game) {
 	playerName = name;
 	playerColor = color;
+	for (int i = 0; i < 6; ++i) {
+		pirateList.push_back(new Pirate(new NullCell()));	
+	}
+	std::vector<Card*> c = game->getCards(6);
+	cardList.insert(cardList.end(), c.begin(), c.end());
 }
 
 Player::~Player() {
-	cardList.clear();
-	std::cout << "Deleted Players hand" << std::endl;
-	pirateList.clear();
-	std::cout << "Deleted Players piratelist" << std::endl;
-
+	for (int i = 0; i < cardList.size(); ++i) {
+		delete cardList[i];
+	}
+	for (int i = 0; i < pirateList.size(); ++i) {
+		delete pirateList[i];
+	}
 }
 
 std::string
@@ -59,4 +66,37 @@ Player::getPirateList() {
 Pirate*
 Player::getPirateInList(int i) {
 	return pirateList.at(i);
+}
+
+void
+Player::movePirate(int i, Cell* c) {
+	pirateList[i]->move(c);
+}
+
+void 
+Player::getCard() {
+	if (cardList.size() > 6) {
+		cout << "Maximum card reached!" << endl;
+		return;
+	} else {
+		cardList.push_back(game->getCard());
+	}
+}
+
+void 
+Player::print() {
+	cout << "\n========================\n";
+	cout << " Player Information" << endl;
+	cout << "========================\n";
+	cout << "Name: " << this->getName() << endl;
+	cout << "Color: " << this->getColor() << endl;
+	cout << "Cards in hand:" << endl;
+	for (Card* card : cardList){
+		card->print();
+	}
+	cout << "Pirate information" << endl;
+	for (Pirate* pirate : pirateList) {
+		pirate->print();
+	}
+
 }

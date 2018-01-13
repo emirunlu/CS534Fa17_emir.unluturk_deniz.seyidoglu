@@ -9,6 +9,7 @@ public:
 	virtual void print();
 protected:
 private:
+	int index = 37;
 };
 
 #endif

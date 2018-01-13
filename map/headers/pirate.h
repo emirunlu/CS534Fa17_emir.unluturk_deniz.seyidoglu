@@ -1,12 +1,16 @@
 #ifndef Pirate_H
 #define Pirate_H
+#include "../../map/headers/cell.h"
 
 class Pirate {
 public:
-	Pirate();
+	Pirate(Cell* loc);
 	~Pirate();
+	void move(Cell* c);
+	void print();
 protected:
 private:
+	Cell* currentCell;
 };
 
 #endif

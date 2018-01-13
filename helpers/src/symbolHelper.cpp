@@ -1,7 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-
 #include "../headers/symbolsHelper.h"
 
 using namespace std;

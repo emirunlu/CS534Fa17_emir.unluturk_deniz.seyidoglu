@@ -9,35 +9,17 @@ using namespace std;
 //Tnis will be our testbed
 int 
 main() {
-	// Card* card = new Card();
-	// card->getSymbol()->print();
-	// Map* map = new Map();
-	// map->printSegments();
-
 	Game* game = new Game();
 	cout << "Welcome to the Cartagena game!\n";
 	cout << "\n========================\n";
-	cout << "Printing map:\n";
-	cout << "========================\n\n";
-	Map* map = game->getMap();
-	map->printSegments();
-
-	std::vector<Card*> cards = game->getCards();
-	cout << "\n========================\n";
-	cout << "Printing cards:\n";
-	cout << "========================\n\n";
-	for (int i = 0; i < cards.size(); ++i) {
-		cout << (i + 1);
-		cout << "\t ";
-		cards[i]->getSymbol()->print();
-	}
-
 	cout << "Please enter your name" << endl;
 
 	string name = "";
-	cin >> name;
+	// cin >> name;
+	name = "< blank >";
 
-	GameHelper* gameHelper = new GameHelper(name, "blue");
+	GameHelper* gameHelper = new GameHelper(game);
+	gameHelper->addPlayer(name, "blue");
 	gameHelper->addPlayer("testAI1", "yellow");
 	gameHelper->addPlayer("testAI2", "red");
 	gameHelper->addPlayer("testAI3", "green");
@@ -49,22 +31,17 @@ main() {
 	while (true) {
 		Player* p = gameHelper->getCurrentPlayer();
 		if (p != NULL) {
-			p->addCard(cards.at(10)); // test
-			p->addPirate(new Pirate()); // test
-			cout << "Current player's turn: " << p->getName() << endl;
-			cout << "Current player's color: " << p->getColor() << endl;
-			cout << "Current player's card: " << p->getCardInHand(0) << endl; // Testing for now, gives pointer
-			cout << "Current player's pirate: " << p->getPirateInList(0) << endl; // Testing for now, gives pointer
+			p->print();
 		}
 		if (turn > gameHelper->getPlayers().size())
 			turn = 0;
-
 		cout << "Continue game? y or n" << endl;
-
 		string cont = "";
 		cin >> cont;
 		if (cont == "n")
 			break;
 		gameHelper->updatePlayerTurn(++turn);
 	}
+
+	delete game;
 }

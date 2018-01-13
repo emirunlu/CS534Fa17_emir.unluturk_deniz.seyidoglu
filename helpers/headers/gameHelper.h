@@ -8,8 +8,7 @@ using namespace std;
 
 class GameHelper {
 public:
-	GameHelper();
-	GameHelper(string name, string color);
+	GameHelper(Game* game);
 	~GameHelper();
 
 	void addPlayer(string name, string color);
@@ -21,7 +20,8 @@ public:
 private:
 	Player* player;
 	Player* currentPlayer;
-	vector<Player*> Players;
+	vector<Player*> players;
+	Game* game;
 
 	void setPlayerTurn(Player* p);
 };

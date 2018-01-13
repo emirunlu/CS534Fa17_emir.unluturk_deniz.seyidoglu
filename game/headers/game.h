@@ -9,7 +9,8 @@ public:
 	Game();
 	~Game();
 	Map* getMap();
-	std::vector<Card*> getCards();
+	std::vector<Card*> getCards(int num);
+	Card* getCard();
 	void clearCards();
 protected:
 private:

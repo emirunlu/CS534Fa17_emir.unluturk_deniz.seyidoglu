@@ -1,0 +1,219 @@
+==59784== Memcheck, a memory error detector
+==59784== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==59784== Using Valgrind-3.14.0.GIT and LibVEX; rerun with -h for copyright info
+==59784== Command: ./cartagena
+==59784== Parent PID: 942
+==59784== 
+--59784-- run: /usr/bin/dsymutil "./cartagena"
+==59784== Invalid read of size 8
+==59784==    at 0x1000062F0: Card::~Card() (in ./cartagena)
+==59784==    by 0x100006344: Card::~Card() (in ./cartagena)
+==59784==    by 0x100001530: Player::~Player() (in ./cartagena)
+==59784==    by 0x100001654: Player::~Player() (in ./cartagena)
+==59784==    by 0x10000B9E6: GameHelper::~GameHelper() (in ./cartagena)
+==59784==    by 0x10000BC74: GameHelper::~GameHelper() (in ./cartagena)
+==59784==    by 0x10000ED10: main (in ./cartagena)
+==59784==  Address 0x100d6d810 is 0 bytes inside a block of size 8 free'd
+==59784==    at 0x1000C00DD: free (vg_replace_malloc.c:533)
+==59784==    by 0x100006D6A: Game::~Game() (in ./cartagena)
+==59784==    by 0x100007014: Game::~Game() (in ./cartagena)
+==59784==    by 0x10000ECE0: main (in ./cartagena)
+==59784==  Block was alloc'd at
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x100191627: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==59784==    by 0x1000064A5: Game::Game() (in ./cartagena)
+==59784==    by 0x100006C94: Game::Game() (in ./cartagena)
+==59784==    by 0x10000D88C: main (in ./cartagena)
+==59784== 
+==59784== Invalid write of size 8
+==59784==    at 0x100006316: Card::~Card() (in ./cartagena)
+==59784==    by 0x100006344: Card::~Card() (in ./cartagena)
+==59784==    by 0x100001530: Player::~Player() (in ./cartagena)
+==59784==    by 0x100001654: Player::~Player() (in ./cartagena)
+==59784==    by 0x10000B9E6: GameHelper::~GameHelper() (in ./cartagena)
+==59784==    by 0x10000BC74: GameHelper::~GameHelper() (in ./cartagena)
+==59784==    by 0x10000ED10: main (in ./cartagena)
+==59784==  Address 0x100d6d810 is 0 bytes inside a block of size 8 free'd
+==59784==    at 0x1000C00DD: free (vg_replace_malloc.c:533)
+==59784==    by 0x100006D6A: Game::~Game() (in ./cartagena)
+==59784==    by 0x100007014: Game::~Game() (in ./cartagena)
+==59784==    by 0x10000ECE0: main (in ./cartagena)
+==59784==  Block was alloc'd at
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x100191627: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==59784==    by 0x1000064A5: Game::Game() (in ./cartagena)
+==59784==    by 0x100006C94: Game::Game() (in ./cartagena)
+==59784==    by 0x10000D88C: main (in ./cartagena)
+==59784== 
+==59784== Invalid free() / delete / delete[] / realloc()
+==59784==    at 0x1000C00DD: free (vg_replace_malloc.c:533)
+==59784==    by 0x100001539: Player::~Player() (in ./cartagena)
+==59784==    by 0x100001654: Player::~Player() (in ./cartagena)
+==59784==    by 0x10000B9E6: GameHelper::~GameHelper() (in ./cartagena)
+==59784==    by 0x10000BC74: GameHelper::~GameHelper() (in ./cartagena)
+==59784==    by 0x10000ED10: main (in ./cartagena)
+==59784==  Address 0x100d6d810 is 0 bytes inside a block of size 8 free'd
+==59784==    at 0x1000C00DD: free (vg_replace_malloc.c:533)
+==59784==    by 0x100006D6A: Game::~Game() (in ./cartagena)
+==59784==    by 0x100007014: Game::~Game() (in ./cartagena)
+==59784==    by 0x10000ECE0: main (in ./cartagena)
+==59784==  Block was alloc'd at
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x100191627: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==59784==    by 0x1000064A5: Game::Game() (in ./cartagena)
+==59784==    by 0x100006C94: Game::Game() (in ./cartagena)
+==59784==    by 0x10000D88C: main (in ./cartagena)
+==59784== 
+==59784== 
+==59784== HEAP SUMMARY:
+==59784==     in use at exit: 22,296 bytes in 166 blocks
+==59784==   total heap usage: 683 allocs, 519 frees, 41,570 bytes allocated
+==59784== 
+==59784== 1 bytes in 1 blocks are indirectly lost in loss record 1 of 46
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x100191627: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==59784==    by 0x10000E460: main (in ./cartagena)
+==59784== 
+==59784== 8 bytes in 1 blocks are indirectly lost in loss record 2 of 46
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x100191627: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==59784==    by 0x100002AAB: std::__1::__split_buffer<Card*, std::__1::allocator<Card*>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<Card*>&) (in ./cartagena)
+==59784==    by 0x10000215C: std::__1::__split_buffer<Card*, std::__1::allocator<Card*>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<Card*>&) (in ./cartagena)
+==59784==    by 0x10000203C: void std::__1::vector<Card*, std::__1::allocator<Card*> >::__push_back_slow_path<Card* const&>(Card* const&) (in ./cartagena)
+==59784==    by 0x10000185E: Player::addCard(Card*) (in ./cartagena)
+==59784==    by 0x10000E43E: main (in ./cartagena)
+==59784== 
+==59784== 8 bytes in 1 blocks are indirectly lost in loss record 3 of 46
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x100191627: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==59784==    by 0x1000039DB: std::__1::__split_buffer<Pirate*, std::__1::allocator<Pirate*>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<Pirate*>&) (in ./cartagena)
+==59784==    by 0x1000030AC: std::__1::__split_buffer<Pirate*, std::__1::allocator<Pirate*>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<Pirate*>&) (in ./cartagena)
+==59784==    by 0x100002F8C: void std::__1::vector<Pirate*, std::__1::allocator<Pirate*> >::__push_back_slow_path<Pirate* const&>(Pirate* const&) (in ./cartagena)
+==59784==    by 0x100001A0E: Player::addPirate(Pirate*) (in ./cartagena)
+==59784==    by 0x10000E49E: main (in ./cartagena)
+==59784== 
+==59784== 24 bytes in 1 blocks are still reachable in loss record 6 of 46
+==59784==    at 0x1000BFE8C: malloc_zone_malloc (vg_replace_malloc.c:304)
+==59784==    by 0x1007C5928: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C58FA: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C43CB: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C40DA: sel_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C39AD: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007D67DA: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x10001CC64: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==59784==    by 0x10001CE39: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==59784==    by 0x10032381D: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==59784==    by 0x1007C3075: _objc_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1002ADACC: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==59784== 
+==59784== 32 bytes in 1 blocks are still reachable in loss record 11 of 46
+==59784==    at 0x1000BFE8C: malloc_zone_malloc (vg_replace_malloc.c:304)
+==59784==    by 0x1007C5A80: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5A50: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5950: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C58FA: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C43CB: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C40DA: sel_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C39AD: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007D67DA: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x10001CC64: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==59784==    by 0x10001CE39: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==59784==    by 0x10032381D: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==59784== 
+==59784== 32 bytes in 1 blocks are still reachable in loss record 12 of 46
+==59784==    at 0x1000BFE8C: malloc_zone_malloc (vg_replace_malloc.c:304)
+==59784==    by 0x1007C5AA1: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5A50: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5950: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C58FA: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C43CB: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C40DA: sel_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C39AD: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007D67DA: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x10001CC64: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==59784==    by 0x10001CE39: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==59784==    by 0x10032381D: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==59784== 
+==59784== 32 bytes in 1 blocks are still reachable in loss record 13 of 46
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x1007C5B65: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5A50: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5950: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C58FA: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C43CB: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C40DA: sel_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C39AD: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007D67DA: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x10001CC64: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==59784==    by 0x10001CE39: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==59784==    by 0x10032381D: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==59784== 
+==59784== 32 bytes in 1 blocks are still reachable in loss record 14 of 46
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x1007C59B6: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C58FA: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C43CB: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C40DA: sel_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C39AD: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007D67DA: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x10001CC64: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==59784==    by 0x10001CE39: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==59784==    by 0x10032381D: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==59784==    by 0x1007C3075: _objc_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1002ADACC: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==59784== 
+==59784== 48 bytes in 1 blocks are still reachable in loss record 18 of 46
+==59784==    at 0x1000C07D5: malloc_zone_calloc (vg_replace_malloc.c:716)
+==59784==    by 0x1007C5F18: _NXHashRehashToCapacity (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5E96: NXHashInsert (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5B8F: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5A50: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C5950: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C58FA: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C43CB: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C40DA: sel_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007C39AD: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007D67DA: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x10001CC64: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==59784== 
+==59784== 72 bytes in 3 blocks are possibly lost in loss record 29 of 46
+==59784==    at 0x1000C0522: calloc (vg_replace_malloc.c:714)
+==59784==    by 0x1007C37E2: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1007D67DA: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x10001CC64: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==59784==    by 0x10001CE39: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==59784==    by 0x10032381D: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==59784==    by 0x1007C3075: _objc_init (in /usr/lib/libobjc.A.dylib)
+==59784==    by 0x1002ADACC: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==59784==    by 0x1002ADAB3: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==59784==    by 0x1001899C2: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==59784==    by 0x10002EA09: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==59784==    by 0x10002EC39: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==59784== 
+==59784== 113 (96 direct, 17 indirect) bytes in 1 blocks are definitely lost in loss record 30 of 46
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x100191627: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)
+==59784==    by 0x10000B7B6: GameHelper::GameHelper(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >) (in ./cartagena)
+==59784==    by 0x10000B914: GameHelper::GameHelper(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >) (in ./cartagena)
+==59784==    by 0x10000DD66: main (in ./cartagena)
+==59784== 
+==59784== 4,096 bytes in 1 blocks are still reachable in loss record 45 of 46
+==59784==    at 0x1000BFAF1: malloc (vg_replace_malloc.c:302)
+==59784==    by 0x1003E86BC: __smakebuf (in /usr/lib/system/libsystem_c.dylib)
+==59784==    by 0x1003FC373: __swsetup (in /usr/lib/system/libsystem_c.dylib)
+==59784==    by 0x1003E797B: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==59784==    by 0x1003E7F59: fwrite (in /usr/lib/system/libsystem_c.dylib)
+==59784==    by 0x1000088D7: std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> > std::__1::__pad_and_output<char, std::__1::char_traits<char> >(std::__1::ostreambuf_iterator<char, std::__1::char_traits<char> >, char const*, char const*, char const*, std::__1::ios_base&, char) (in ./cartagena)
+==59784==    by 0x1000082E5: std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long) (in ./cartagena)
+==59784==    by 0x100007FCB: std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::operator<< <std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*) (in ./cartagena)
+==59784==    by 0x10000D8BC: main (in ./cartagena)
+==59784== 
+==59784== LEAK SUMMARY:
+==59784==    definitely lost: 96 bytes in 1 blocks
+==59784==    indirectly lost: 17 bytes in 3 blocks
+==59784==      possibly lost: 72 bytes in 3 blocks
+==59784==    still reachable: 4,296 bytes in 7 blocks
+==59784==         suppressed: 17,815 bytes in 152 blocks
+==59784== 
+==59784== For counts of detected and suppressed errors, rerun with: -v
+==59784== ERROR SUMMARY: 8 errors from 5 contexts (suppressed: 9 from 9)

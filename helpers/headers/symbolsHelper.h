@@ -1,6 +1,5 @@
 #ifndef SymbolHelper_H
 #define SymbolHelper_H
-
 #include "../../symbols/headers/bottle.h"
 #include "../../symbols/headers/hat.h"
 #include "../../symbols/headers/keys.h"

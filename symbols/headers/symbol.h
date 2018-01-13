@@ -3,7 +3,8 @@
 
 class Symbol {
 public:
-	virtual void print()=0;
+	virtual ~Symbol();
+	virtual void print() = 0;
 protected:
 private:
 };

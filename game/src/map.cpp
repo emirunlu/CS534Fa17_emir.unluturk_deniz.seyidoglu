@@ -1,6 +1,5 @@
 #include <iostream>
 #include "../headers/map.h"
-#include "../../map/headers/segment.h"
 
 using namespace std;
 
@@ -12,7 +11,10 @@ Map::Map() {
 }
 
 Map::~Map() {
-	
+	for (int i = 0; i < segments.size(); ++i) {
+		delete segments[i];
+	}
+	segments.clear();
 }
 
 void
@@ -22,7 +24,7 @@ Map::printSegments() {
 	}
 }
 
-void
-Map::clearMap() {
-	segments.clear();
+Cell*
+Map::getFirstCell() {
+	return segments[0]->getFirstCell();
 }

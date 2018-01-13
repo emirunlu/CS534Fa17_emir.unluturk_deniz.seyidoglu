@@ -1,68 +1,45 @@
 #include "../headers/gameHelper.h"
 
-GameHelper::GameHelper() {
-	player = new Player();
-	currentPlayer = player;
+GameHelper::GameHelper(Game* g) {
+	game = g;
 }
 
-GameHelper::GameHelper(std::string name, std::string color)
-{
-	player = new Player(name, color);
-	currentPlayer = player;
-}
-
-GameHelper::~GameHelper()
-{
-	Players.clear();
-	std::cout << "Deleted Players vector" << std::endl;
+GameHelper::~GameHelper() {
+	for (int i = 0; i < players.size(); ++i) {
+		delete players[i];
+	}
+	players.clear();
 }
 
 void
-GameHelper::addPlayer(std::string name, std::string color)
-{
-	Player* p = new Player(name, color);
-	Players.push_back(p);
+GameHelper::addPlayer(std::string name, std::string color) {
+	players.push_back(new Player(name, color, game));
 }
 
 void
-GameHelper::setPlayer(Player * p)
-{
+GameHelper::setPlayer(Player * p) {
 	player = p;
 }
 
 void
-GameHelper::updatePlayerTurn(int turn)
-{
-	if (turn == 1)
-		currentPlayer = player;
-	else {
-		int t = turn - 2;
-		for (unsigned int i = 0; i < Players.size(); ++i) {
-			if (t == i)
-				currentPlayer = Players.at(i);
-		}
+GameHelper::updatePlayerTurn(int turn) {
+	int t = turn - 1;
+	for (unsigned int i = 0; i < players.size(); ++i) {
+		if (t == i) currentPlayer = players.at(i);
 	}
 }
 
 Player*
-GameHelper::getCurrentPlayer()
-{
+GameHelper::getCurrentPlayer() {
 	return currentPlayer;
 }
 
 vector<Player*>
 GameHelper::getPlayers() {
-
-	vector<Player*> c;
-	for (unsigned int i = 0; i < Players.size(); ++i) {
-		Player* p = Players.at(i);
-		c.push_back(p);
-	}
-	return c;
+	return players;
 }
 
 void
-GameHelper::setPlayerTurn(Player * p)
-{
+GameHelper::setPlayerTurn(Player * p) {
 	currentPlayer = p;
 }

@@ -8,7 +8,7 @@ public:
 	Map();
 	~Map();
 	void printSegments();
-	void clearMap();
+	Cell* getFirstCell();
 protected:
 private:
 	std::vector<Segment*> segments;
