@@ -17,10 +17,24 @@ Map::~Map() {
 	segments.clear();
 }
 
+Cell*
+Map::searchSymbol(Symbol* symbol) {
+	for (int i = 0; i < segments.size(); ++i) {
+		Cell* c = segments[i]->searchSymbol(symbol);
+		if (c) {
+			cout << "Found in segment " << (i+1) << " cell " << (c->getIndex()) << endl;
+			return c;
+		}
+	}
+}
+
 void
-Map::printSegments() {
-	for (int i = 0; i < 6; ++i) {
+Map::print() {
+	for (int i = 0; i < 6; ++i) {		
+		cout << i + 1;
+		cout << "th segment \n";
 		segments[i]->print();
+		cout << endl;
 	}
 }
 

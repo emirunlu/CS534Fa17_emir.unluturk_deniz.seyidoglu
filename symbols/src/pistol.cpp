@@ -11,7 +11,12 @@ Pistol::~Pistol() {
 	
 }
 
+std::string 
+Pistol::toString(){
+	return "Pistol";
+}
+
 void
 Pistol::print() {
-	cout << "I'm a pistol" << endl;
+	cout << "Pistol" << endl;
 }

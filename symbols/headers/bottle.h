@@ -6,6 +6,7 @@ class Bottle : public Symbol {
 public:
 	Bottle();
 	~Bottle();
+	std::string toString();
 	void print();
 protected:
 private:

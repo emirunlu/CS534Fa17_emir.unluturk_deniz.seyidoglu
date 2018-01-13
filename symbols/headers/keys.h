@@ -6,6 +6,7 @@ class Keys : public Symbol {
 public:
 	Keys();
 	~Keys();
+	std::string toString();
 	void print();
 protected:
 private:

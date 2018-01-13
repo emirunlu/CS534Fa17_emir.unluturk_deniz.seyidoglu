@@ -16,10 +16,21 @@ Cell::~Cell() {
 	delete symbol;
 }
 
+Cell*
+Cell::searchSymbol(Symbol* s) {
+	if (symbol->toString() == s->toString()) {
+		if (!occupied) {
+			occupied = true;
+			return this;
+		}
+		return NULL;
+	}
+	else return NULL;
+}
+
 void
-Cell::print() {
-	cout << "\tI'm a cell! And my symbol is: ";
-	symbol->print();
+Cell::setOccupied(bool cond) {
+	occupied = cond;
 }
 
 void 
@@ -30,4 +41,15 @@ Cell::setSymbolCell(Symbol* sym) {
 void
 Cell::setIndex(int i) {
 	index = i;
+}
+
+int
+Cell::getIndex() {
+	return index;
+}
+
+void
+Cell::print() {
+	cout << index << "-> ";
+	symbol->print();
 }

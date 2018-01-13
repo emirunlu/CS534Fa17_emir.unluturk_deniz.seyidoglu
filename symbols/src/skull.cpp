@@ -11,7 +11,12 @@ Skull::~Skull() {
 	
 }
 
+std::string 
+Skull::toString(){
+	return "Skull";
+}
+
 void
 Skull::print() {
-	cout << "I'm a skull" << endl;
+	cout << "Skull" << endl;
 }

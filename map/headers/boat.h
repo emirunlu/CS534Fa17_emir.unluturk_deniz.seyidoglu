@@ -6,6 +6,8 @@ class Boat : public Cell {
 public:
 	Boat();
 	~Boat();
+	virtual Cell* searchSymbol(Symbol* symbol);
+	int getIndex();
 	virtual void print();
 protected:
 private:

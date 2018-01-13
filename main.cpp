@@ -6,13 +6,17 @@
 
 using namespace std;
 
-//Tnis will be our testbed
 int 
 main() {
 	Game* game = new Game();
 	cout << "Welcome to the Cartagena game!\n";
 	cout << "\n========================\n";
-	cout << "Please enter your name" << endl;
+	cout << "Printing map:\n";		
+ 	cout << "========================\n\n";		
+ 	Map* map = game->getMap();		
+ 	map->print();
+
+	cout << "\n\nPlease enter your name" << endl;
 
 	string name = "";
 	// cin >> name;
@@ -31,6 +35,14 @@ main() {
 	while (true) {
 		Player* p = gameHelper->getCurrentPlayer();
 		if (p != NULL) {
+			p->print();
+			int cardIndex, pirateIndex;
+			cout << "Choose a card to use: ";
+			cin >> cardIndex;
+			cout << "Which pirate? ";
+			cin >> pirateIndex;
+			p->playCard(cardIndex, pirateIndex);
+			cout << "\n\nCard played! New information..";
 			p->print();
 		}
 		if (turn > gameHelper->getPlayers().size())

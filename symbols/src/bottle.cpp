@@ -11,7 +11,12 @@ Bottle::~Bottle() {
 	
 }
 
+std::string 
+Bottle::toString(){
+	return "Bottle";
+}
+
 void
 Bottle::print() {
-	cout << "I'm a bottle" << endl;
+	cout << "Bottle" << endl;
 }

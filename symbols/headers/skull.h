@@ -6,6 +6,7 @@ class Skull : public Symbol {
 public:
 	Skull();
 	~Skull();
+	std::string toString();
 	void print();
 protected:
 private:

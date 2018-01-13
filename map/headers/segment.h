@@ -9,6 +9,7 @@ public:
 	Segment(bool lastSegment);
 	~Segment();
 	void print();
+	Cell* searchSymbol(Symbol* symbol);
 	Cell* getFirstCell();
 protected:
 private:

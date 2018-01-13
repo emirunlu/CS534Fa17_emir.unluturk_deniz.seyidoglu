@@ -26,6 +26,7 @@ public:
 
 	vector<Card*> getHand();
 	Card * getCardInHand(int i);
+	void playCard(int cardIndex, int pirateIndex);
 	void addCard(Card* c);
 	void getCard();
 

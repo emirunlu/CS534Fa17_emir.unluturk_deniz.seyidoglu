@@ -9,13 +9,14 @@ Player::Player() {
 	playerColor = "DefaultColor";
 }
 
-Player::Player(std::string name, std::string color, Game* game) {
+Player::Player(std::string name, std::string color, Game* g) {
 	playerName = name;
 	playerColor = color;
+	game = g;
 	for (int i = 0; i < 6; ++i) {
 		pirateList.push_back(new Pirate(new NullCell()));	
 	}
-	std::vector<Card*> c = game->getCards(6);
+	std::vector<Card*> c = g->getCards(6);
 	cardList.insert(cardList.end(), c.begin(), c.end());
 }
 
@@ -68,9 +69,17 @@ Player::getPirateInList(int i) {
 	return pirateList.at(i);
 }
 
+void 
+Player::playCard(int cardIndex, int pirateIndex) {
+	Symbol* symbol = cardList[cardIndex - 1]->getSymbol();
+	cardList.erase(cardList.begin() + cardIndex - 1);
+	Cell* c = game->getMap()->searchSymbol(symbol);
+	movePirate(pirateIndex, c);
+}
+
 void
 Player::movePirate(int i, Cell* c) {
-	pirateList[i]->move(c);
+	pirateList[i - 1]->move(c);
 }
 
 void 
@@ -87,16 +96,19 @@ void
 Player::print() {
 	cout << "\n========================\n";
 	cout << " Player Information" << endl;
-	cout << "========================\n";
+	cout << "========================\n\n";
 	cout << "Name: " << this->getName() << endl;
 	cout << "Color: " << this->getColor() << endl;
-	cout << "Cards in hand:" << endl;
-	for (Card* card : cardList){
-		card->print();
-	}
-	cout << "Pirate information" << endl;
-	for (Pirate* pirate : pirateList) {
-		pirate->print();
-	}
+	cout << "\nCards in hand" << endl;
 
+	for (int i = 0; i < cardList.size(); ++i){
+		cout << (i + 1) << "  ";
+		cardList[i]->print();
+	}
+	cout << "\nPirate information" << endl;
+	for (int i = 0; i < pirateList.size(); ++i){
+		pirateList[i]->print();
+	}
+	
+	cout << endl << endl;
 }

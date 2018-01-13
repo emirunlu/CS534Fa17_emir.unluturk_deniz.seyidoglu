@@ -7,7 +7,8 @@ class Map {
 public:
 	Map();
 	~Map();
-	void printSegments();
+	void print();
+	Cell* searchSymbol(Symbol* symbol);
 	Cell* getFirstCell();
 protected:
 private:

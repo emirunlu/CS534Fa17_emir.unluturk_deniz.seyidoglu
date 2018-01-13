@@ -16,7 +16,6 @@ Card::Card(int symbolNumber) {
 
 Card::~Card() {
 	delete symbol;
-	symbol = NULL;
 }
 
 Symbol*
@@ -26,6 +25,6 @@ Card::getSymbol() {
 
 void
 Card::print() {
-	cout << "\tI'm a card! And my symbol is: ";
+	cout << "Card: ";
 	symbol->print();
 }

@@ -11,7 +11,12 @@ Keys::~Keys() {
 	
 }
 
+std::string 
+Keys::toString(){
+	return "Keys";
+}
+
 void
 Keys::print() {
-	cout << "I'm a key" << endl;
+	cout << "Key" << endl;
 }

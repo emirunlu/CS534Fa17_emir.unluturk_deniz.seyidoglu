@@ -11,7 +11,12 @@ Hat::~Hat() {
 	
 }
 
+std::string 
+Hat::toString(){
+	return "Hat";
+}
+
 void
 Hat::print() {
-	cout << "I'm a hat" << endl;
+	cout << "Hat" << endl;
 }

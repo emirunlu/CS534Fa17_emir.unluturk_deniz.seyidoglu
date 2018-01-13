@@ -13,5 +13,5 @@ NullCell::~NullCell() {
 
 void
 NullCell::print() {
-	cout << "\tI'm a null cell and my index is: " << index << endl;
+	cout << index << endl;
 }

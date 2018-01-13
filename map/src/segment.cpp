@@ -14,7 +14,7 @@ Segment::Segment(bool lastSegment) {
   	shuffle (cells.begin(), cells.end(), std::default_random_engine(seed));
   	
   	for (int i = 0; i < cells.size(); ++i) {
-  		cells[i]->setIndex(i);
+  		cells[i]->setIndex(i + 1);
   	}
 
 	if (lastSegment) {
@@ -30,16 +30,27 @@ Segment::~Segment() {
 }
 
 Cell*
+Segment::searchSymbol(Symbol* symbol) {
+	for (int i = 0; i < cells.size(); ++i) {
+		Cell* foundCell = cells[i]->searchSymbol(symbol);
+		if (foundCell) {
+			return foundCell;
+		}
+	}
+	//TODO: Null cell
+	return NULL;
+}
+
+Cell*
 Segment::getFirstCell() {
 	return cells[0];
 }
 
 void
 Segment::print() {
-	cout << "I'm a segment!" << endl;
 	for (int i = 0; i < cells.size(); ++i) {
 		cout << i + 1;
-		cout << "th cell:";
+		cout << "th cell: ";
 		cells[i]->print();
 	}
 }

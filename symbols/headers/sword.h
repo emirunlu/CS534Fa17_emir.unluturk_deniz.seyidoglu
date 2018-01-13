@@ -6,6 +6,7 @@ class Sword : public Symbol {
 public:
 	Sword();
 	~Sword();
+	std::string toString();
 	void print();
 protected:
 private:

@@ -6,6 +6,7 @@ class Hat : public Symbol {
 public:
 	Hat();
 	~Hat();
+	std::string toString();
 	void print();
 protected:
 private:
