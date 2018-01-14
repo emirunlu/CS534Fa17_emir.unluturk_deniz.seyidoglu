@@ -1,6 +1,7 @@
 #ifndef Segment_H
 #define Segment_H
 #include <vector>
+#include "./nullCell.h"
 #include "./cell.h"
 #include "./boat.h"
 
@@ -9,7 +10,9 @@ public:
 	Segment(bool lastSegment);
 	~Segment();
 	void print();
-	Cell* searchSymbol(Symbol* symbol);
+	Cell* searchOccupied(int currentIndex);
+	Cell* searchSymbol(Symbol* symbol, int currentIndex);
+	std::vector<Cell*> getCells();
 	Cell* getFirstCell();
 protected:
 private:

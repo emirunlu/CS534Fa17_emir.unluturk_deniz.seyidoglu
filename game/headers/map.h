@@ -2,13 +2,15 @@
 #define Map_H
 #include <vector>
 #include "../../map/headers/segment.h"
+#include "../../map/headers/nullCell.h"
 
 class Map {
 public:
 	Map();
 	~Map();
 	void print();
-	Cell* searchSymbol(Symbol* symbol);
+	Cell* searchOccupied(int currentIndex);
+	Cell* searchSymbol(Symbol* symbol, int currentIndex);
 	Cell* getFirstCell();
 protected:
 private:

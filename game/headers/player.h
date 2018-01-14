@@ -12,15 +12,15 @@ using namespace std;
 
 class Player {
 public:
-	Player();
-	~Player();
 	Player(string name, string color, Game* game);
+	~Player();
 
 	string getName();
 	string getColor();
+	bool checkStatus();
 
 	void addPirate(Pirate* p);
-	void movePirate(int index, Cell* c);
+	void moveBack(int pirateIndex);
 	vector<Pirate*> getPirateList();
 	Pirate * getPirateInList(int i);
 

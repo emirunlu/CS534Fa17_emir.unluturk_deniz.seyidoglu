@@ -8,7 +8,12 @@ Pirate::Pirate(Cell* loc) {
 }
 
 Pirate::~Pirate() {
-	
+	delete currentCell;
+}
+
+int
+Pirate::getStatus() {
+	return currentCell->getIndex();
 }
 
 void

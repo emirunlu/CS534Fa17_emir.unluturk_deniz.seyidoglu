@@ -32,17 +32,26 @@ Game::getMap() {
 	return map;
 }
 
+void
+Game::shuffleOldCards() {
+	cout << "No more cards! Shuffling used cards.." << endl;
+	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	shuffle (usedCards.begin(), usedCards.end(), std::default_random_engine(seed));
+	cards = usedCards;
+}
+
 std::vector<Card*>
 Game::getCards(int num) {
 	std::vector<Card*> playerCards;
 	if (cards.size() > 0) {
 		for (int i = 0; i < num; ++i){
 			playerCards.push_back(cards[i]);
+			usedCards.push_back(cards[i]);
 			cards.erase(cards.begin() + i);
 		}
 		return playerCards;
 	} else {
-		cout << "No more cards!" << endl;
+		return {};
 	}
 }
 
@@ -50,10 +59,11 @@ Card*
 Game::getCard() {
 	if (cards.size() > 0) {
 		Card* card = cards[0];
+		usedCards.push_back(cards[0]);
 		cards.erase(cards.begin());
 		return card;
 	} else {
-		cout << "No more cards!" << endl;
+		return new NullCard();
 	}
 }
 

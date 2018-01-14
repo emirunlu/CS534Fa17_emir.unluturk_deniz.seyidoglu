@@ -8,16 +8,17 @@ public:
 	Cell(int symbolNumber);
 	virtual ~Cell();
 	void setSymbolCell(Symbol* sym);
-	void setOccupied(bool cond);
-	void setIndex(int i);
+	virtual void setIndex(int i);
 	int getIndex();
-	virtual Cell* searchSymbol(Symbol* symbol);
+	int getOccupied();
+	virtual Cell* searchOccupied(int currentIndex);
+	virtual Cell* searchSymbol(Symbol* symbol, int currentIndex);
 	virtual void print();
 protected:
 private:
 	Symbol* symbol;
 	int index;
-	bool occupied;
+	int occupied;
 };
 
 #endif

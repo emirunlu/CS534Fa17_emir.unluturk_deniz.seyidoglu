@@ -4,11 +4,6 @@
 #include "../headers/player.h"
 #include "../../map/headers/nullCell.h"
 
-Player::Player() {
-	playerName = "Default";
-	playerColor = "DefaultColor";
-}
-
 Player::Player(std::string name, std::string color, Game* g) {
 	playerName = name;
 	playerColor = color;
@@ -69,26 +64,58 @@ Player::getPirateInList(int i) {
 	return pirateList.at(i);
 }
 
+bool
+Player::checkStatus() {
+	for(auto pirate : pirateList) {
+		if (pirate->getStatus() != 37) {
+			return false;
+		}
+	}
+	return true;
+}
+
 void 
 Player::playCard(int cardIndex, int pirateIndex) {
 	Symbol* symbol = cardList[cardIndex - 1]->getSymbol();
 	cardList.erase(cardList.begin() + cardIndex - 1);
-	Cell* c = game->getMap()->searchSymbol(symbol);
-	movePirate(pirateIndex, c);
+	int currentIndex = pirateList[pirateIndex - 1]->getStatus();
+	Cell* c = game->getMap()->searchSymbol(symbol, currentIndex);
+	if (c->getIndex() > currentIndex){
+		pirateList[pirateIndex - 1]->move(c);
+	}
+	else {
+		cout << "No cells that are closer to boat!\n\n";
+		return;
+	}
 }
 
 void
-Player::movePirate(int i, Cell* c) {
-	pirateList[i - 1]->move(c);
+Player::moveBack(int pirateIndex) {
+	int currentIndex = pirateList[pirateIndex - 1]->getStatus();
+	Cell* c = game->getMap()->searchOccupied(currentIndex);
+	if (c->getIndex() > 0) {
+		pirateList[pirateIndex - 1]->move(c);
+		int occupied = c->getOccupied();
+		int i = 0;
+		while(i < occupied){
+			getCard();	
+			++i;	
+		}
+	}
+	else {
+		cout << "Can't go back!" << endl;
+		return;
+	}
 }
 
 void 
 Player::getCard() {
-	if (cardList.size() > 6) {
-		cout << "Maximum card reached!" << endl;
-		return;
+	Card* card = game->getCard();
+	if (card){
+		cardList.push_back(card);
 	} else {
-		cardList.push_back(game->getCard());
+		game->shuffleOldCards();
+		getCard();
 	}
 }
 

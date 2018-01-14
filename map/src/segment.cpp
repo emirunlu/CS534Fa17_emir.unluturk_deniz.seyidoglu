@@ -12,10 +12,6 @@ Segment::Segment(bool lastSegment) {
 	}
   	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
   	shuffle (cells.begin(), cells.end(), std::default_random_engine(seed));
-  	
-  	for (int i = 0; i < cells.size(); ++i) {
-  		cells[i]->setIndex(i + 1);
-  	}
 
 	if (lastSegment) {
 		cells.push_back(new Boat());
@@ -29,16 +25,32 @@ Segment::~Segment() {
 	cells.clear();
 }
 
-Cell*
-Segment::searchSymbol(Symbol* symbol) {
-	for (int i = 0; i < cells.size(); ++i) {
-		Cell* foundCell = cells[i]->searchSymbol(symbol);
+Cell* 
+Segment::searchOccupied(int currentIndex){
+	cout << "Searching in segment.." << endl;
+	for (int i = cells.size() - 1; i >= 0; --i) {
+		Cell* foundCell = cells[i]->searchOccupied(currentIndex);
 		if (foundCell) {
 			return foundCell;
 		}
 	}
-	//TODO: Null cell
-	return NULL;
+	return new NullCell();
+}
+
+Cell*
+Segment::searchSymbol(Symbol* symbol, int currentIndex) {
+	for (int i = 0; i < cells.size(); ++i) {
+		Cell* foundCell = cells[i]->searchSymbol(symbol, currentIndex);
+		if (foundCell) {
+			return foundCell;
+		}
+	}
+	return new NullCell();
+}
+
+std::vector<Cell*>
+Segment::getCells() {
+	return cells;
 }
 
 Cell*

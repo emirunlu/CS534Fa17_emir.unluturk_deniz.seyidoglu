@@ -6,12 +6,14 @@ class Boat : public Cell {
 public:
 	Boat();
 	~Boat();
-	virtual Cell* searchSymbol(Symbol* symbol);
+	virtual Cell* searchOccupied(int currentIndex);
+	virtual Cell* searchSymbol(Symbol* symbol, int currentIndex);
 	int getIndex();
+	virtual void setIndex(int i);
 	virtual void print();
 protected:
 private:
-	int index = 37;
+	int index;
 };
 
 #endif
