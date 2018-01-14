@@ -8,7 +8,7 @@ Sword::Sword() {
 }
 
 Sword::~Sword() {
-	
+	// cout << "Sword destructor called!" << endl;
 }
 
 std::string 

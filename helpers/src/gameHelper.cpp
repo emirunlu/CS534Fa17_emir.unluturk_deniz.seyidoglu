@@ -5,6 +5,14 @@ GameHelper::GameHelper(Game* g) {
 }
 
 GameHelper::~GameHelper() {
+	cout << "GameHelper destructor called!" << endl;
+	for (auto player : players) {
+		delete player;
+	}
+	player = nullptr;
+	currentPlayer = nullptr;
+	delete game;
+	cout << "GameHelper destructor finished!" << endl;
 }
 
 void

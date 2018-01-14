@@ -19,6 +19,11 @@ Segment::Segment(bool lastSegment) {
 }
 
 Segment::~Segment() {
+	cout << "Segment destructor called!" << endl;
+	for (auto cell : cells) {
+		// delete cell;
+		cell = nullptr;
+	}
 }
 
 Cell* 

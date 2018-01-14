@@ -8,7 +8,7 @@ Hat::Hat() {
 }
 
 Hat::~Hat() {
-	
+	// cout << "Hat destructor called!" << endl;
 }
 
 std::string 

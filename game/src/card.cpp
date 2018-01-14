@@ -15,7 +15,9 @@ Card::Card(int symbolNumber) {
 }
 
 Card::~Card() {
-
+	cout << "Card destructor called!" << endl;
+	delete symbol;
+	symbol = nullptr;
 }
 
 Symbol*
