@@ -119,6 +119,15 @@ Player::getCard() {
 	}
 }
 
+void
+Player::printCompact() {
+	cout << "\n========================\n";
+	cout << " Player Information" << endl;
+	cout << "========================\n\n";
+	cout << "Name: " << this->getName() << endl;
+	cout << "Color: " << this->getColor() << endl;
+}
+
 void 
 Player::print() {
 	cout << "\n========================\n";

@@ -30,6 +30,7 @@ public:
 	void addCard(Card* c);
 	void getCard();
 
+	void printCompact();
 	void print();
 protected:
 private:

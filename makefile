@@ -3,7 +3,14 @@ appname := cartagena
 CXX := g++
 CXXFLAGS := -std=c++11 -Wall
 
-srcfiles := $(shell find . -name "*.cpp")
+srcfiles := $(shell find . \
+				! -name "gameState.cpp" \
+				! -name "imageManager.cpp" \
+				! -name "menuState.cpp" \
+				! -name "sdl.cpp" \
+				! -name "stateManager.cpp" \
+				! -name "tcpcon.cpp" \
+				-name "*.cpp")
 objects  := $(patsubst %.cpp, %.o, $(srcfiles))
 
 all: $(appname)

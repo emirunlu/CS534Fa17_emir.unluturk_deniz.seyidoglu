@@ -68,7 +68,7 @@ main() {
 
 	GameHelper* gameHelper = new GameHelper(game);
 	gameHelper->addPlayer(name, "blue");
-	// gameHelper->addPlayer("testAI1", "yellow");
+	gameHelper->addPlayer("testAI1", "yellow");
 	// gameHelper->addPlayer("testAI2", "red");
 	// gameHelper->addPlayer("testAI3", "green");
 	cout << "\n========================\n";
@@ -79,6 +79,7 @@ main() {
 	gameHelper->updatePlayerTurn(turn);
 	while (true) {
 		Player* p = gameHelper->getCurrentPlayer();
+		cout << "TURN: " << turn << endl;
 		if (p != NULL) {
 			for (int i = 0; i < 2; ++i){
 				p->print();
@@ -101,8 +102,9 @@ main() {
 			delete game;
 			return 0;	
 		}
-		if (turn > gameHelper->getPlayers().size())
-			turn = 1;
+		if (turn == gameHelper->getPlayers().size()){
+			turn = 0;
+		}
 		gameHelper->updatePlayerTurn(++turn);
 	}
 	delete game;
