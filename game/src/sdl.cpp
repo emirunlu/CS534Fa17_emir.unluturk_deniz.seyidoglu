@@ -12,7 +12,6 @@ SDL::~SDL() {
 
 }
 
-
 int 
 SDL::init() {
 	// Initialize SDL subsystems(video and mixer) 
@@ -40,8 +39,6 @@ SDL::init() {
 		screenSurface = SDL_GetWindowSurface(window);
 	}
 
-	stateManager::setState(new menuState());
-
 	run();
 
 	clean();
@@ -52,26 +49,176 @@ SDL::init() {
 void
 SDL::run() {
 	bool quit = false;
+
+	bgImage = loadPNG("test.png");
+	if (bgImage == NULL) { printf("Unable to load image %s! SDL Error: %s\n", "../../resources/test.bmp", SDL_GetError()); }
+	drawBackground(bgImage);
+	SDL_FreeSurface(bgImage);
+	SDL_UpdateWindowSurface(window);
+
+	SDL_ShowSimpleMessageBox(0, "Cartagena Menu", "Play with the (p) key!", window);
+
 	while (!quit)
 	{
-		while (SDL_PollEvent(&e)) {
+		//Handle events on queue
+		while (SDL_PollEvent(&e) != 0)
+		{
+			//User requests quit
+			if (e.type == SDL_QUIT)
+			{
+				return;
+			}
+		}
+		const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+		if (currentKeyStates[SDL_SCANCODE_P])
+			quit = true;
+	}
+	gameState();
+}
 
-			stateManager::getState()->handleEvents(e);
 
-			if (event.type == SDL_QUIT) {
+void
+SDL::playCard(Player* p) {
+	int cardIndex, pirateIndex;
+	cout << "Choose a card to use: ";
+	cin >> cardIndex;
+	cout << "Entered cardIndex: " << cardIndex << endl;
+	cout << "Which pirate?: ";
+	cin >> pirateIndex;
+	cout << "Entered pirateIndex: " << pirateIndex << endl;
+	p->playCard(cardIndex, pirateIndex);
+	cout << "\n\nCard played! New information..\n";
+}
+
+void
+SDL::goBack(Player* p) {
+	int pirateIndex;
+	cout << "Which pirate?: ";
+	cin >> pirateIndex;
+	p->moveBack(pirateIndex);
+	cout << "\n\nNew information..\n";
+}
+
+void
+SDL::executeChoice(int choice, Player* p) {
+	switch (choice) {
+	case 1:
+		playCard(p);
+		break;
+	case 2:
+		goBack(p);
+		break;
+	case 3:
+		cout << "\n\nSkipping..\n";
+		break;
+	}
+}
+
+void
+SDL::gameState() {
+	bool quit = false;
+
+	//Clear screen
+	SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+	SDL_RenderClear(renderer);
+	const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+
+	SDL_ShowSimpleMessageBox(0, "Cartagena InGame Instructions", "1) (M)ove card 2) Move Pirate (B)ackwards 3) (S)kip Turn", window);
+
+	//Add Players
+	Game* game = new Game();
+	GameHelper* gameHelper = new GameHelper(game);
+	Map* map = game->getMap();
+	map->print();
+
+	gameHelper->addPlayer("< blank >", "blue");
+	gameHelper->addPlayer("AIPlayer2", "yellow");
+	int playerCount;
+	cout << "How many players?: (2-5)";
+	cin >> playerCount;
+	switch (playerCount) {
+	case 2:
+		break;
+	case 3:
+		gameHelper->addPlayer("AIPlayer3", "red");
+		break;
+	case 4:
+		gameHelper->addPlayer("AIPlayer3", "red");
+		gameHelper->addPlayer("AIPlayer4", "green");
+		break;
+	case 5:
+		gameHelper->addPlayer("AIPlayer3", "red");
+		gameHelper->addPlayer("AIPlayer4", "green");
+		gameHelper->addPlayer("AIPlayer5", "brown");
+		break;
+	}
+
+	unsigned int turn = 1;
+	gameHelper->updatePlayerTurn(turn);
+	Player* p = gameHelper->getCurrentPlayer();
+	p->print();
+	while (!quit)
+	{
+		Player* p = gameHelper->getCurrentPlayer();
+
+		while (SDL_PollEvent(&e) != 0)
+		{
+			if (e.type == SDL_QUIT)
+			{
 				quit = true;
 			}
 		}
 
-		stateManager::getState()->Update();
+		if (currentKeyStates[SDL_SCANCODE_M]) { // Move card
+			executeChoice(1, p);
+			p->print();
+			cout << "Press enter to continue" << endl;
+			string temp;
+			temp = cin.get();
+			cin.ignore();
+			if (turn == gameHelper->getPlayers().size())
+				turn = 0;
+			gameHelper->updatePlayerTurn(++turn);
+			SDL_ShowSimpleMessageBox(0, "Cartagena InGame Instructions", "1) (M)ove card 2) Move Pirate (B)ackwards 3) (S)kip Turn", window);
+		}
+		else if (currentKeyStates[SDL_SCANCODE_B]) { // Move pirate backwards
+			executeChoice(2, p);
+			p->print();
+			cout << "Press enter to continue" << endl;
+			string temp;
+			temp = cin.get();
+			cin.ignore();
+			if (turn == gameHelper->getPlayers().size())
+				turn = 0;
+			gameHelper->updatePlayerTurn(++turn);
+			SDL_ShowSimpleMessageBox(0, "Cartagena InGame Instructions", "1) (M)ove card 2) Move Pirate (B)ackwards 3) (S)kip Turn", window);
 
-		SDL_RenderClear(renderer);
+		}
+		else if (currentKeyStates[SDL_SCANCODE_S]) { // Skip turn
+			executeChoice(3, p);
+			p->print();
+			cout << "Press enter to continue" << endl;
+			string temp;
+			temp = cin.get();
+			cin.ignore();
+			if (turn == gameHelper->getPlayers().size())
+				turn = 0;
+			gameHelper->updatePlayerTurn(++turn);
+			SDL_ShowSimpleMessageBox(0, "Cartagena InGame Instructions", "1) (M)ove card 2) Move Pirate (B)ackwards 3) (S)kip Turn", window);
 
-		stateManager::getState()->Render();
+		}
 
-		SDL_RenderPresent(renderer);
+		if (p->checkStatus()) {
+			cout << "Game over!" << endl;
+			cout << "Congrats " << p->getName() << "!!" << endl;
+			delete game;
+			return;
+			
+		}	
 	}
+	delete game;
 }
+
 
 void
 SDL::clean() {
@@ -82,6 +229,37 @@ SDL::clean() {
 	SDL_DestroyWindow(window);
 	IMG_Quit();
 	SDL_Quit();
+}
+
+SDL_Surface*
+SDL::loadPNG(std::string path) {
+	SDL_Surface* pngFile = NULL;
+
+	SDL_Surface* load = IMG_Load(path.c_str());
+	if (load == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
+	}
+	else
+	{
+		pngFile = SDL_ConvertSurface(load, screenSurface->format, NULL);
+		if (pngFile == NULL)
+		{
+			printf("Unable to optimize image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+		}
+
+		SDL_FreeSurface(load);
+	}
+
+	return pngFile;
+}
+
+void
+SDL::drawBackground(SDL_Surface* bgImage) {
+	SDL_Rect source = { 0, 0, 800, 600 };
+	SDL_Rect destination = { 0, 0, 800, 600 };
+
+	SDL_BlitSurface(bgImage, &source, screenSurface, &destination);
 }
 
 void 
