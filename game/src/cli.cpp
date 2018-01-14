@@ -74,10 +74,27 @@ CLI::init() {
 	name = "< blank >";
 
 	GameHelper* gameHelper = new GameHelper(game);
-	gameHelper->addPlayer(name, "blue");
-	gameHelper->addPlayer("testAI1", "yellow");
-	// gameHelper->addPlayer("testAI2", "red");
-	// gameHelper->addPlayer("testAI3", "green");
+	gameHelper->addPlayer("< blank >", "blue");
+	gameHelper->addPlayer("AIPlayer2", "yellow");
+	int playerCount;
+	cout << "How many players?: (2-5)";
+	cin >> playerCount;
+	switch (playerCount) {
+	case 2:
+		break;
+	case 3:
+		gameHelper->addPlayer("AIPlayer3", "red");
+		break;
+	case 4:
+		gameHelper->addPlayer("AIPlayer3", "red");
+		gameHelper->addPlayer("AIPlayer4", "green");
+		break;
+	case 5:
+		gameHelper->addPlayer("AIPlayer3", "red");
+		gameHelper->addPlayer("AIPlayer4", "green");
+		gameHelper->addPlayer("AIPlayer5", "brown");
+		break;
+	}
 	cout << "\n========================\n";
 	cout << "Starting the Game!!!" << endl;
 	cout << "========================\n\n";
