@@ -21,6 +21,7 @@ public:
 	~SDL();
 
 	int init();
+	SDL_Surface * loadPNG(std::string path);
 	void clean();
 
 	void Menu();

@@ -30,18 +30,51 @@ SDL::init() {
 		return -1;
 	}
 	timer = SDL_GetTicks();
-	screenSurface = SDL_GetWindowSurface(window);
 
-	bgImage = SDL_LoadBMP("test2.bmp");
+	//PNG init
+	int imgFlags = IMG_INIT_PNG;
+	if( !( IMG_Init( imgFlags ) & imgFlags ) ) {
+		printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+	}
+	else {
+		screenSurface = SDL_GetWindowSurface(window);
+	}
+	
+	bgImage = loadPNG("test.png");
 	if (bgImage == NULL) { printf("Unable to load image %s! SDL Error: %s\n", "../../resources/test.bmp", SDL_GetError()); }
 	drawBackground(bgImage); // draws test background for now
 
 	SDL_UpdateWindowSurface(window);
-	SDL_Delay(10000);
+	SDL_Delay(10000); // test delay
 
 	clean();
 
 	return 0;
+}
+
+SDL_Surface* SDL::loadPNG(std::string path)
+{
+	SDL_Surface* pngFile = NULL;
+
+	SDL_Surface* load = IMG_Load(path.c_str());
+	if (load == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
+	}
+	else
+	{
+		//Convert surface to screen format
+		pngFile = SDL_ConvertSurface(load, screenSurface->format, NULL);
+		if (pngFile == NULL)
+		{
+			printf("Unable to optimize image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+		}
+
+		//Get rid of old loaded surface
+		SDL_FreeSurface(load);
+	}
+
+	return pngFile;
 }
 
 void
