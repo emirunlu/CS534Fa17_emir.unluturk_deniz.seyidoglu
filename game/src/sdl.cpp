@@ -119,8 +119,11 @@ SDL::gameState() {
 	bool quit = false;
 
 	//Clear screen
-	SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+	SDL_SetRenderDrawColor(renderer, 0, 0, 200, 255); // blue for now
 	SDL_RenderClear(renderer);
+	SDL_RenderPresent(renderer);
+
+
 	const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
 
 	SDL_ShowSimpleMessageBox(0, "Cartagena InGame Instructions", "1) (M)ove card 2) Move Pirate (B)ackwards 3) (S)kip Turn", window);
@@ -155,12 +158,47 @@ SDL::gameState() {
 
 	unsigned int turn = 1;
 	gameHelper->updatePlayerTurn(turn);
+	SDL_Surface* cardImg = new SDL_Surface();
 	Player* p = gameHelper->getCurrentPlayer();
 	p->print();
+	int x = 0;
+
+
 	while (!quit)
 	{
-		Player* p = gameHelper->getCurrentPlayer();
+		p = gameHelper->getCurrentPlayer();
+		for (int i = 0; i < p->getHand().size(); ++i) {
+			string s = p->getHand().at(i)->getSymbol()->toString();
 
+			if (s == "Bottle") {
+				cardImg = loadPNG("bottle.png");
+			}
+			if (s == "Hat") {
+				cardImg = loadPNG("hat.png");
+			}
+			if (s == "Keys") {
+				cardImg = loadPNG("key.png");
+			}
+			if (s == "Sword") {
+				cardImg = loadPNG("sword.png");
+			}
+			if (s == "Pistol") {
+				cardImg = loadPNG("pistol.png");
+			}
+			if (s == "Skull") {
+				cardImg = loadPNG("skull.png");
+			}
+			if (s == "Boat") {
+				cardImg = loadPNG("boat.png");
+			}
+
+			SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, cardImg);
+			SDL_Rect dstrect = { x, 500, 200 / 3, 100 };
+			SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+			SDL_RenderPresent(renderer);
+
+			x += 200;
+		}
 		while (SDL_PollEvent(&e) != 0)
 		{
 			if (e.type == SDL_QUIT)

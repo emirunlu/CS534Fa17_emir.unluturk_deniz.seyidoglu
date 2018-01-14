@@ -4,6 +4,8 @@
 #include "game/headers/game.h"
 #include "helpers/headers/gameHelper.h"
 #include "game/headers/sdl.h"
+#include "game/headers/cli.h"
+
 using namespace std;
 
 void 
@@ -22,7 +24,7 @@ main(int argc, char* args[]) {
 	cout << "Printing map:\n";		
  	cout << "========================\n\n";		
 
-	SDL* gui = new SDL();
+	CLI* gui = new CLI(); // change to CLI for console mode
 	gui->init();
 
 	return -1;
