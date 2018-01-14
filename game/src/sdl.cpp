@@ -17,7 +17,10 @@ int
 SDL::init() {
 	// Initialize SDL subsystems(video and mixer) 
 	SDL_Init(SDL_INIT_EVERYTHING);
-
+	if (TTF_Init() == -1) {
+		printf("TTF_Init: %s\n", TTF_GetError());
+		exit(2);
+	}
 	window = SDL_CreateWindow("Cartagena Board Game - v1.0.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 	if (!window) {
 		std::cout << "Error creating window:" << SDL_GetError() << std::endl;
@@ -42,10 +45,36 @@ SDL::init() {
 	
 	bgImage = loadPNG("test.png");
 	if (bgImage == NULL) { printf("Unable to load image %s! SDL Error: %s\n", "../../resources/test.bmp", SDL_GetError()); }
-	drawBackground(bgImage); // draws test background for now
 
-	SDL_UpdateWindowSurface(window);
-	SDL_Delay(10000); // test delay
+	bool quit = false;
+	while (!quit)
+	{
+		//Handle events on queue
+		while (SDL_PollEvent(&e) != 0)
+		{
+			//User requests quit
+			if (e.type == SDL_QUIT)
+			{
+				quit = true;
+			}
+		}
+
+		//Clear screen
+		SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+		SDL_RenderClear(renderer);
+
+		//Test menu for now
+		drawBackground(bgImage); // draws test background for now
+		SDL_UpdateWindowSurface(window);
+
+		//Render current frame
+		displayText("Start (G)ame", 350, 250, 12, 255, 255, 255, 0, 0, 0);
+	
+		displayText("(Q)uit Game", 350, 270, 12, 255, 255, 255, 0, 0, 0);
+
+		//Update screen
+		SDL_RenderPresent(renderer);
+	}
 
 	clean();
 
@@ -81,10 +110,11 @@ void
 SDL::clean() {
 	// Clean resources
 	SDL_DestroyTexture(texture);
-	//TTF_Quit();
 	// Clean renderer and window
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
+	TTF_Quit();
+	IMG_Quit();
 	SDL_Quit();
 }
 
@@ -95,8 +125,8 @@ SDL::Menu() {
 		handleMenuInput();
 		clearScreen();
 
-		//displayText("Start (G)ame", 350, 250, 12, 255, 255, 255, 0, 0, 0);
-		//displayText("(Q)uit Game", 350, 270, 12, 255, 255, 255, 0, 0, 0);
+		displayText("Start (G)ame", 350, 250, 12, 255, 255, 255, 0, 0, 0);
+		displayText("(Q)uit Game", 350, 270, 12, 255, 255, 255, 0, 0, 0);
 
 		SDL_RenderPresent(renderer);
 
@@ -127,7 +157,7 @@ SDL::clearScreen() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 }
-/*
+
 void 
 SDL::displayText(std::string text, int x, int y, int size, int fR, int fG, int fB, int bR, int bG, int bB) {
 	TTF_Font* font = TTF_OpenFont("arial.ttf", size);
@@ -137,15 +167,18 @@ SDL::displayText(std::string text, int x, int y, int size, int fR, int fG, int f
 
 	SDL_Surface* temp = TTF_RenderText_Shaded(font, text.c_str(), foreground, background);
 
+	SDL_Texture* textureText = SDL_CreateTextureFromSurface(renderer, temp);
 	SDL_Rect destination = { x, y, 0, 0 };
 
-	SDL_BlitSurface(temp, NULL, backBuffer, &destination);
+	//SDL_BlitSurface(temp, NULL, screenSurface, &destination);
+
+	SDL_RenderCopy(renderer, textureText, NULL, &destination);
 
 	SDL_FreeSurface(temp);
 
 	TTF_CloseFont(font);
 }
-*/
+
 void 
 SDL::handleMenuInput() {
 

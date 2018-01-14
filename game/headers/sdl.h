@@ -30,8 +30,8 @@ public:
 
 	void drawBackground(SDL_Surface* bgImage);
 	void clearScreen();
-	//void displayText(std::string text, int x, int y, int size,
-	//	int fR, int fG, int fB, int bR, int bG, int bB);
+	void displayText(std::string text, int x, int y, int size,
+		int fR, int fG, int fB, int bR, int bG, int bB);
 	void handleMenuInput();
 	void handleGameInput();
 	void handleExitInput();
@@ -40,9 +40,11 @@ private:
 	SDL_Window * window;
 	SDL_Renderer* renderer;
 	SDL_Texture* texture;
+	SDL_Event e;
 
 	SDL_Surface* bgImage;  // Our background image
 	SDL_Surface* screenSurface;
+	SDL_Surface* text;
 	SDL_Event event;
 	int timer;
 
