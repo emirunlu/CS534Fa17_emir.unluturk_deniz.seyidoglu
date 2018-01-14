@@ -24,6 +24,11 @@ Boat::searchSymbol(Symbol* symbol, int currentIndex){
 	return this;
 }
 
+Symbol*
+Boat::getSymbol() {
+	return NULL;
+}
+
 void
 Boat::setIndex(int i) {
 	index = 37;

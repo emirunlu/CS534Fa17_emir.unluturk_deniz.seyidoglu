@@ -14,7 +14,7 @@ public:
 	void decreaseOccupied();
 	virtual Cell* searchOccupied(int currentIndex);
 	virtual Cell* searchSymbol(Symbol* symbol, int currentIndex);
-	Symbol* getSymbol();
+	virtual Symbol* getSymbol();
 	virtual void print();
 protected:
 private:

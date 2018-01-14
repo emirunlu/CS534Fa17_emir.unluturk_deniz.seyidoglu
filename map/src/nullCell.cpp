@@ -11,7 +11,7 @@ NullCell::~NullCell() {
 	
 }
 
-Cell* 
+Cell*
 NullCell::searchOccupied(int currentIndex){
 	return this;
 }
@@ -19,6 +19,11 @@ NullCell::searchOccupied(int currentIndex){
 Cell* 
 NullCell::searchSymbol(Symbol* symbol, int currentIndex){
 	return this;
+}
+
+Symbol*
+NullCell::getSymbol() {
+	return NULL;
 }
 
 void

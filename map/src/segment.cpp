@@ -27,7 +27,8 @@ Segment::searchOccupied(int currentIndex){
 	Cell* foundCell = new NullCell();
 	for (int i = cells.size() - 1; i >= 0; --i) {
 		foundCell = cells[i]->searchOccupied(currentIndex);
-		if (foundCell->getSymbol() && foundCell->getIndex() > currentIndex) {
+		if (foundCell->getIndex() > 0  && foundCell->getIndex() < 38 && foundCell->getIndex() < currentIndex) {
+			cout << "Segment found cell index: " << foundCell->getIndex() << endl;
 			return foundCell;
 		}
 	}
@@ -40,7 +41,7 @@ Segment::searchSymbol(Symbol* symbol, int currentIndex) {
 	Cell* foundCell = new NullCell();
 	for (int i = 0; i < cells.size(); ++i) {
 		foundCell = cells[i]->searchSymbol(symbol, currentIndex);
-		if (foundCell->getSymbol() && foundCell->getIndex() > currentIndex) {
+		if (foundCell->getSymbol() != NULL && foundCell->getIndex() > currentIndex) {
 			cout << "Segment found cell index: " << foundCell->getIndex() << endl;
 			return foundCell;
 		}

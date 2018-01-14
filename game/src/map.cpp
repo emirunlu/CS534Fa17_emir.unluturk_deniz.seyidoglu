@@ -19,7 +19,7 @@ Map::Map() {
 }
 
 Map::~Map() {
-	
+
 }
 
 Cell* 
@@ -34,7 +34,7 @@ Map::searchOccupied(int currentIndex){
 	cout << "i: " << i << endl;
 	for (;i >= 0; --i) {
 		Cell* c = segments[i]->searchOccupied(currentIndex);
-		if (c->getIndex() > currentIndex) {
+		if (c->getIndex() > 0  && c->getIndex() < 38 && c->getIndex() < currentIndex) {
 			cout << "Found in segment " << (i+1) << " cell " << (c->getIndex()) << endl;
 			return c;
 		}

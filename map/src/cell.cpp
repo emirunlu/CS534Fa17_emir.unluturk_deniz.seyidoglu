@@ -6,8 +6,7 @@
 using namespace std;
 
 Cell::Cell() {
-	symbol = SymbolHelper::getRandomSymbol();
-	occupied = 0;
+	
 }
 
 Cell::Cell(int symbolNumber) {
@@ -21,13 +20,27 @@ Cell::~Cell() {
 
 Cell*
 Cell::searchOccupied(int currentIndex) {
-	if (currentIndex <= index) return new NullCell();
+	cout << "\n\n=============================" << endl;
+	cout << "Cell currentIndex: " << currentIndex << endl;
+	cout << "Cell index: " << index << endl;
+	if (currentIndex <= index) {
+		cout << "Returning nullCell because this index is higher..\n";
+		cout << "=============================" << endl;
+		return new NullCell();
+	}
 	if (occupied > 0 && occupied <= 2) {
-		cout << "FOUND!" << endl;
 		occupied++;
+		cout << "Found a occupied cell!" << endl;
+		cout << "Found index is: " << index << endl;
+		cout << "Returning this cell! Success!\n";
+		cout << "=============================" << endl;
 		return this;
 	}
-	else return new NullCell();
+	else {
+		cout << "Returning nullCell..\n";
+		cout << "=============================" << endl;
+		return new NullCell();
+	}
 }
 
 Cell*
@@ -44,7 +57,7 @@ Cell::searchSymbol(Symbol* s, int currentIndex) {
 	cout << "this.symbol is: " << symbol->toString() << endl << "s is: " << s->toString() << endl;
 	if (symbol->toString() == s->toString()) {
 		cout << "FOUND!" << endl;
-		if (occupied < 2) {
+		if (occupied < 1) {
 			++occupied;
 			cout << "Returning this cell! Success!" << endl;
 			cout << "=============================" << endl;

@@ -9,6 +9,7 @@ public:
 	int getIndex();
 	virtual Cell* searchOccupied(int currentIndex);
 	virtual Cell* searchSymbol(Symbol* symbol, int currentIndex);
+	virtual Symbol* getSymbol();
 	virtual void setIndex(int i);
 	virtual void print();
 protected:

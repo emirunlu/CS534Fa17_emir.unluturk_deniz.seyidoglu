@@ -92,6 +92,7 @@ void
 Player::moveBack(int pirateIndex) {
 	int currentIndex = pirateList[pirateIndex - 1]->getStatus();
 	Cell* c = game->getMap()->searchOccupied(currentIndex);
+	c->print();
 	if (c->getIndex() > 0) {
 		pirateList[pirateIndex - 1]->move(c);
 		int occupied = c->getOccupied();
