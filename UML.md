@@ -11,5 +11,5 @@ This is an overview of the MVC model.
 This is an overview of the Model. To keep things simple it only shows the more
 important methods.
 
-![Model UML](doc/Model.png)
- 
+![Model UML](doc/uml.png)
+
