@@ -2,7 +2,7 @@
 
 ## MVC Design
 
-This is an overview of the MVC model.
+This is an overview of the MVC model. SDL handles both view and controller, so internal parts were not shown in the UML.
 
 ![MVC UML](doc/mvc.png)
 
