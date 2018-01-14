@@ -4,7 +4,7 @@
 using namespace std;
 
 Boat::Boat() {
-
+	index = 37;
 }
 
 Boat::~Boat() {
@@ -13,7 +13,7 @@ Boat::~Boat() {
 
 Cell* 
 Boat::searchOccupied(int currentIndex){
-	return NULL;
+	return this;
 }
 
 Cell* 
@@ -31,7 +31,7 @@ Boat::setIndex(int i) {
 
 int 
 Boat::getIndex(){
-	return index;
+	return 37;
 }
 
 void

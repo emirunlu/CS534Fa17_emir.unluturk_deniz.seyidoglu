@@ -19,10 +19,7 @@ Map::Map() {
 }
 
 Map::~Map() {
-	for (int i = 0; i < segments.size(); ++i) {
-		delete segments[i];
-	}
-	segments.clear();
+	
 }
 
 Cell* 
@@ -37,7 +34,7 @@ Map::searchOccupied(int currentIndex){
 	cout << "i: " << i << endl;
 	for (;i >= 0; --i) {
 		Cell* c = segments[i]->searchOccupied(currentIndex);
-		if (c) {
+		if (c->getIndex() > currentIndex) {
 			cout << "Found in segment " << (i+1) << " cell " << (c->getIndex()) << endl;
 			return c;
 		}
@@ -53,10 +50,18 @@ Map::searchSymbol(Symbol* symbol, int currentIndex) {
 	} else {
 		i = 0;
 	}
+	
+	cout << "Map index: " << i << endl;
+	cout << "Map currentIndex: " << currentIndex << endl;
+
 	for (;i < segments.size(); ++i) {
 		Cell* c = segments[i]->searchSymbol(symbol, currentIndex);
-		return c;
+		if (c->getIndex() > currentIndex) {
+			cout << "Found in segment " << (i+1) << " cell " << (c->getIndex()) << endl;
+			return c;
+		}
 	}
+	return new NullCell();
 }
 
 void

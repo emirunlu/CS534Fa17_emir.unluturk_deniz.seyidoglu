@@ -20,8 +20,10 @@ playCard(Player* p){
 	int cardIndex, pirateIndex;
 	cout << "Choose a card to use: ";
 	cin >> cardIndex;
+	cout << "Entered cardIndex: " << cardIndex << endl;
 	cout << "Which pirate?: ";
 	cin >> pirateIndex;
+	cout << "Entered pirateIndex: " << pirateIndex << endl;
 	p->playCard(cardIndex, pirateIndex);
 	cout << "\n\nCard played! New information..\n";
 }
@@ -32,7 +34,7 @@ goBack(Player* p) {
 	cout << "Which pirate?: ";
 	cin >> pirateIndex;
 	p->moveBack(pirateIndex);
-	cout << "\n\nPirate moved back! New information..\n";
+	cout << "\n\nNew information..\n";
 }
 
 void
@@ -79,7 +81,6 @@ main() {
 	gameHelper->updatePlayerTurn(turn);
 	while (true) {
 		Player* p = gameHelper->getCurrentPlayer();
-		cout << "TURN: " << turn << endl;
 		if (p != NULL) {
 			for (int i = 0; i < 2; ++i){
 				p->print();
@@ -92,7 +93,9 @@ main() {
 					executeChoice(choice, p);
 					p->print();	
 					cout << "Press enter to continue" << endl;
-					getchar();
+					string temp;
+					temp = cin.get();
+					cin.ignore();
 				}
 			}
 		}

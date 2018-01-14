@@ -5,10 +5,6 @@ GameHelper::GameHelper(Game* g) {
 }
 
 GameHelper::~GameHelper() {
-	for (int i = 0; i < players.size(); ++i) {
-		delete players[i];
-	}
-	players.clear();
 }
 
 void

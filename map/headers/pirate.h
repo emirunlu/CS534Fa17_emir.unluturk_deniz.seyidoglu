@@ -8,6 +8,7 @@ public:
 	~Pirate();
 	void move(Cell* c);
 	int getStatus();
+	Cell* getCell();
 	void print();
 protected:
 private:

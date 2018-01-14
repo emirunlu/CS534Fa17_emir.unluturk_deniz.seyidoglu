@@ -19,18 +19,15 @@ Segment::Segment(bool lastSegment) {
 }
 
 Segment::~Segment() {
-	for (int i = 0; i < cells.size(); ++i){
-		delete cells[i];
-	}
-	cells.clear();
 }
 
 Cell* 
 Segment::searchOccupied(int currentIndex){
 	cout << "Searching in segment.." << endl;
+	Cell* foundCell = new NullCell();
 	for (int i = cells.size() - 1; i >= 0; --i) {
-		Cell* foundCell = cells[i]->searchOccupied(currentIndex);
-		if (foundCell) {
+		foundCell = cells[i]->searchOccupied(currentIndex);
+		if (foundCell->getSymbol() && foundCell->getIndex() > currentIndex) {
 			return foundCell;
 		}
 	}
@@ -39,9 +36,12 @@ Segment::searchOccupied(int currentIndex){
 
 Cell*
 Segment::searchSymbol(Symbol* symbol, int currentIndex) {
+	cout << "Segment current index: " << currentIndex << endl;
+	Cell* foundCell = new NullCell();
 	for (int i = 0; i < cells.size(); ++i) {
-		Cell* foundCell = cells[i]->searchSymbol(symbol, currentIndex);
-		if (foundCell) {
+		foundCell = cells[i]->searchSymbol(symbol, currentIndex);
+		if (foundCell->getSymbol() && foundCell->getIndex() > currentIndex) {
+			cout << "Segment found cell index: " << foundCell->getIndex() << endl;
 			return foundCell;
 		}
 	}

@@ -15,7 +15,7 @@ Card::Card(int symbolNumber) {
 }
 
 Card::~Card() {
-	delete symbol;
+
 }
 
 Symbol*

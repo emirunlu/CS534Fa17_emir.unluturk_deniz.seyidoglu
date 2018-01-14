@@ -11,8 +11,10 @@ public:
 	virtual void setIndex(int i);
 	int getIndex();
 	int getOccupied();
+	void decreaseOccupied();
 	virtual Cell* searchOccupied(int currentIndex);
 	virtual Cell* searchSymbol(Symbol* symbol, int currentIndex);
+	Symbol* getSymbol();
 	virtual void print();
 protected:
 private:

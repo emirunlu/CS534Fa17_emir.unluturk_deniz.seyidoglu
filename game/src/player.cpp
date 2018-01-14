@@ -16,12 +16,7 @@ Player::Player(std::string name, std::string color, Game* g) {
 }
 
 Player::~Player() {
-	for (int i = 0; i < cardList.size(); ++i) {
-		delete cardList[i];
-	}
-	for (int i = 0; i < pirateList.size(); ++i) {
-		delete pirateList[i];
-	}
+	
 }
 
 std::string
@@ -77,13 +72,17 @@ Player::checkStatus() {
 void 
 Player::playCard(int cardIndex, int pirateIndex) {
 	Symbol* symbol = cardList[cardIndex - 1]->getSymbol();
-	cardList.erase(cardList.begin() + cardIndex - 1);
 	int currentIndex = pirateList[pirateIndex - 1]->getStatus();
+	cout << "\n\n\nPlayer currentIndex:" << currentIndex << endl;
 	Cell* c = game->getMap()->searchSymbol(symbol, currentIndex);
 	if (c->getIndex() > currentIndex){
+		cout << "\n\n\nMoving pirate to: " << c->getIndex() << "\nPrev index was: " << currentIndex << endl << endl << endl;
+		pirateList[pirateIndex - 1]->getCell()->decreaseOccupied();
 		pirateList[pirateIndex - 1]->move(c);
+		cardList.erase(cardList.begin() + cardIndex - 1);
 	}
 	else {
+		cout << "\n\n\nFound cell: " << c->getIndex() << endl << endl << endl;
 		cout << "No cells that are closer to boat!\n\n";
 		return;
 	}

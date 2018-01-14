@@ -8,17 +8,25 @@ Pirate::Pirate(Cell* loc) {
 }
 
 Pirate::~Pirate() {
-	delete currentCell;
+	
 }
 
 int
 Pirate::getStatus() {
-	return currentCell->getIndex();
+	int loc = currentCell->getIndex();
+	if (loc <= 37 && loc >= 0) return currentCell->getIndex();
+	// This should happen but it does, i don't know why!
+	else return 0;
 }
 
 void
 Pirate::move(Cell* c) {
 	currentCell = c;
+}
+
+Cell*
+Pirate::getCell() {
+	return currentCell;
 }
 
 void 

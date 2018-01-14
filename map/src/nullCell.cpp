@@ -4,7 +4,7 @@
 using namespace std;
 
 NullCell::NullCell() {
-
+	index = 0;
 }
 
 NullCell::~NullCell() {
@@ -13,12 +13,12 @@ NullCell::~NullCell() {
 
 Cell* 
 NullCell::searchOccupied(int currentIndex){
-	return NULL;
+	return this;
 }
 
 Cell* 
 NullCell::searchSymbol(Symbol* symbol, int currentIndex){
-	return NULL;
+	return this;
 }
 
 void
@@ -28,7 +28,7 @@ NullCell::setIndex(int i) {
 
 int
 NullCell::getIndex() {
-	return index;
+	return 0;
 }
 
 void
