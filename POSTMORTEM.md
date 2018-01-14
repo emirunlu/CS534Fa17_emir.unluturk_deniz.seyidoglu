@@ -22,7 +22,7 @@ This is an overview of the MVC model.
 
 This is an overview of the Model.
 
-![Model UML](doc/Model.png)
+![Model UML](doc/uml.png)
 
 ## Design Decisions
 
