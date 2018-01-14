@@ -8,8 +8,7 @@ This is an overview of the MVC model.
 
 ## Model Big Picture
 
-This is an overview of the Model. To keep things simple it only shows the more
-important methods.
+This is an overview of the Model.
 
 ![Model UML](doc/uml.png)
 
