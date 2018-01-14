@@ -16,7 +16,23 @@ Player::Player(std::string name, std::string color, Game* g) {
 }
 
 Player::~Player() {
-	
+	cout << "Player destructor called!" << endl;
+	for (auto card : cardList ){
+		delete card;
+		card = nullptr;
+	} 
+	cardList.clear();
+	cout << "Cleared cards!" << endl;
+	for (auto pirate : pirateList ){
+		if (pirate){
+			delete pirate;
+			pirate = nullptr;
+		}
+	} 
+	pirateList.clear();
+	cout << "Cleared pirates!" << endl;
+	game = nullptr;
+	cout << "Player destructor finished!" << endl;
 }
 
 std::string

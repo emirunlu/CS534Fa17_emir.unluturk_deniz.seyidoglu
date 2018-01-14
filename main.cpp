@@ -102,14 +102,19 @@ main() {
 		if (p->checkStatus()){
 			cout << "Game over!" << endl;
 			cout << "Congrats " << p->getName() << "!!" << endl;
-			delete game;
+			delete gameHelper;
 			return 0;	
 		}
+		cout << "Continue game? y or n" << endl;
+		string cont = "";
+		cin >> cont;
+		if (cont == "n")
+			break; 
 		if (turn == gameHelper->getPlayers().size()){
 			turn = 0;
 		}
 		gameHelper->updatePlayerTurn(++turn);
 	}
-	delete game;
+	delete gameHelper;
 	return -1;
 }

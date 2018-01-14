@@ -8,7 +8,7 @@ Skull::Skull() {
 }
 
 Skull::~Skull() {
-	
+	// cout << "Skull destructor called!" << endl;
 }
 
 std::string 

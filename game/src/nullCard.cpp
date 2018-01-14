@@ -11,7 +11,7 @@ NullCard::NullCard(int symbolNumber) {
 }
 
 NullCard::~NullCard() {
-	
+	cout << "NullCard destructor called!" << endl;
 }
 
 Symbol*

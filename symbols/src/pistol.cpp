@@ -8,7 +8,7 @@ Pistol::Pistol() {
 }
 
 Pistol::~Pistol() {
-	
+	// cout << "Pistol destructor called!" << endl;
 }
 
 std::string 

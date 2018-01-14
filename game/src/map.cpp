@@ -19,7 +19,12 @@ Map::Map() {
 }
 
 Map::~Map() {
-
+	cout << "Map destructor called!" << endl;
+	for (auto segment : segments ){
+		delete segment;
+		segment = nullptr;
+	} 
+	segments.clear();
 }
 
 Cell* 

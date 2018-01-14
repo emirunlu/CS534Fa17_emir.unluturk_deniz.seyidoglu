@@ -6,7 +6,7 @@
 using namespace std;
 
 Cell::Cell() {
-	
+
 }
 
 Cell::Cell(int symbolNumber) {
@@ -14,8 +14,11 @@ Cell::Cell(int symbolNumber) {
 	occupied = 0;
 }
 
-Cell::~Cell() {
-
+Cell::~Cell() {	
+	cout << "Cell destructor called!" << endl;
+	if (symbol){
+		symbol = nullptr;
+	}
 }
 
 Cell*

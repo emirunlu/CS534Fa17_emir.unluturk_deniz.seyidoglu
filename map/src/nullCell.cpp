@@ -8,7 +8,7 @@ NullCell::NullCell() {
 }
 
 NullCell::~NullCell() {
-	
+	cout << "NullCell destructor called!" << endl;
 }
 
 Cell*

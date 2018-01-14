@@ -20,6 +20,7 @@ Game::Game() {
 }
 
 Game::~Game() {
+	cout << "Game destructor called!" << endl;
 	for (int i = 0; i < cards.size(); ++i) {
 		delete cards[i];
 	}

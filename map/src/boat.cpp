@@ -8,7 +8,7 @@ Boat::Boat() {
 }
 
 Boat::~Boat() {
-	
+	cout << "Boat destructor called!" << endl;
 }
 
 Cell* 

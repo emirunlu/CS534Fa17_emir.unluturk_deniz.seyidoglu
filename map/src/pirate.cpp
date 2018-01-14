@@ -8,7 +8,9 @@ Pirate::Pirate(Cell* loc) {
 }
 
 Pirate::~Pirate() {
-	
+	cout << "Pirate destructor called!" << endl;
+	delete currentCell;
+	currentCell = nullptr;
 }
 
 int

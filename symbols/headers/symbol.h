@@ -1,6 +1,7 @@
 #ifndef Symbol_H
 #define Symbol_H
 #include <string>
+#include <iostream>
 
 class Symbol {
 public:
